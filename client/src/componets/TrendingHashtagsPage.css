@@ -1,0 +1,242 @@
+/* ================================
+   TrendingHashtagsPage.css
+================================ */
+
+.hashtagsWrapper {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.hashtagsContainer {
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+/* ================================
+   Header
+================================ */
+
+.hashtagsHeader {
+  margin-bottom: 25px;
+}
+
+.hashtagsHeader h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.hashtagsHeader p {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #6b7280;
+}
+
+/* ================================
+   Search Box
+================================ */
+
+.hashtagSearch {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+
+  font-size: 16px;
+  outline: none;
+
+  background: #fff;
+  transition: 0.25s;
+}
+
+.hashtagSearch:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+/* ================================
+   Card
+================================ */
+
+.hashtagCard {
+  background: #fff;
+
+  border-radius: 16px;
+
+  padding: 18px 22px;
+
+  margin-bottom: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+
+  border: 1px solid #ececec;
+
+  transition: all 0.25s ease;
+}
+
+.hashtagCard:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+
+  border-color: #111;
+}
+
+.hashtagCard h3 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 22px;
+
+  font-weight: 700;
+}
+
+.hashtagCard span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+/* ================================
+   Arrow
+================================ */
+
+.arrow {
+  font-size: 28px;
+
+  color: #555;
+
+  transition: 0.25s;
+}
+
+.hashtagCard:hover .arrow {
+  transform: translateX(6px);
+
+  color: #000;
+}
+
+/* ================================
+   Loading
+================================ */
+
+.loadingText {
+  text-align: center;
+
+  padding: 60px 20px;
+
+  color: #777;
+
+  font-size: 17px;
+}
+
+/* ================================
+   Scrollbar
+================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* ================================
+   Responsive
+================================ */
+
+@media (max-width: 768px) {
+  .hashtagsWrapper {
+    padding-top: 70px;
+  }
+
+  .hashtagsContainer {
+    padding: 0 15px;
+  }
+
+  .hashtagsHeader h2 {
+    font-size: 26px;
+  }
+
+  .hashtagsHeader p {
+    font-size: 14px;
+  }
+
+  .hashtagSearch {
+    font-size: 15px;
+    padding: 12px 15px;
+  }
+
+  .hashtagCard {
+    padding: 16px;
+  }
+
+  .hashtagCard h3 {
+    font-size: 18px;
+  }
+
+  .hashtagCard span {
+    font-size: 13px;
+  }
+
+  .arrow {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hashtagsWrapper {
+    padding-top: 65px;
+  }
+
+  .hashtagsHeader h2 {
+    font-size: 22px;
+  }
+
+  .hashtagsHeader p {
+    font-size: 13px;
+  }
+
+  .hashtagCard {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .hashtagCard h3 {
+    font-size: 16px;
+  }
+
+  .hashtagCard span {
+    font-size: 12px;
+  }
+
+  .arrow {
+    font-size: 18px;
+  }
+}

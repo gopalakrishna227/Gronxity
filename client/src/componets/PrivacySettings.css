@@ -1,0 +1,111 @@
+.privacy-page {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%);
+  display: flex;
+  justify-content: center;
+}
+
+.privacy-card {
+  width: 100%;
+  max-width: 860px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px;
+  border: 1px solid #e7ebf3;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.privacy-header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #0f172a;
+}
+
+.privacy-header p {
+  margin: 10px 0 24px;
+  color: #64748b;
+}
+
+.privacy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.privacy-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid #e8eef8;
+  background: #fbfdff;
+}
+
+.privacy-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.privacy-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #eff6ff, #eef2ff);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+}
+
+.privacy-left h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.privacy-left p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Toggle */
+.toggle-switch {
+  width: 58px;
+  height: 32px;
+  border-radius: 999px;
+  background: #cbd5e1;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.toggle-switch.active {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle-switch.active .toggle-thumb {
+  left: 30px;
+}
+
+/* Dropdown */
+.privacy-dropdown {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #dbe4f0;
+  background: #fff;
+  font-weight: 600;
+}

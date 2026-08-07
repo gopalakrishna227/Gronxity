@@ -1,0 +1,140 @@
+.student-saved-page {
+  min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+}
+
+.student-saved-card {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 24px;
+  padding: 40px 24px;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.student-saved-card h2 {
+  margin: 16px 0 10px;
+  color: #0f172a;
+}
+
+.student-saved-card p {
+  margin: 0;
+  color: #64748b;
+}
+.post-mode-switch {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.mode-btn.active {
+  background: #4f46e5;
+  color: white;
+  border-color: #4f46e5;
+}
+
+
+.student-saved-page {
+  min-height: 100vh;
+  background: #f5f6f8;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.student-saved-card {
+  max-width: 420px;
+  margin: 80px auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 36px 24px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  color: #222;
+}
+
+.student-saved-card svg {
+  margin-bottom: 12px;
+}
+
+.student-saved-card h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.student-saved-card p {
+  margin: 0;
+  color: #666;
+}
+
+.saved-list {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.saved-post {
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.saved-post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.saved-post h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #111;
+}
+
+.saved-post p {
+  margin: 0 0 12px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.saved-post img,
+.saved-post video {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.saved-bookmark-btn {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.saved-bookmark-btn.active svg {
+  fill: #000;
+  color: #000;
+}

@@ -1,0 +1,136 @@
+/* Full page */
+
+.trendingPageWrapper{
+    position: fixed;
+    top: 70px;       /* navbar height */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    background:#f4f6fb;
+}
+
+/* Content */
+
+.trendingPage{
+    max-width:700px;
+    margin:20px auto;
+    padding:0 15px 40px;
+}
+
+/* Header */
+
+.trendingHeader{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.trendingHeader h2{
+    margin:0;
+    color:#2563eb;
+}
+
+.trendingHeader p{
+    margin-top:8px;
+    color:#666;
+}
+
+/* Card */
+
+.trendingPostCard{
+    background:#fff;
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+/* Header */
+
+.postHeader{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.profileImage{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.userDetails h4{
+    margin:0;
+    font-size:17px;
+}
+
+.userDetails span{
+    font-size:13px;
+    color:#777;
+}
+
+/* Content */
+
+.postContent{
+    margin-bottom:15px;
+    line-height:1.6;
+    font-size:16px;
+    word-break:break-word;
+}
+
+/* Image */
+
+.postImage{
+    width:100%;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+/* Video */
+
+.postVideo{
+    width:100%;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+/* Footer */
+
+.postFooter{
+    display:flex;
+    justify-content:space-between;
+    padding-top:12px;
+    border-top:1px solid #ececec;
+    color:#555;
+    font-weight:500;
+}
+
+/* Empty */
+
+.noPosts{
+    background:#fff;
+    border-radius:12px;
+    padding:50px;
+    text-align:center;
+    color:#666;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+
+
+.clickableProfile {
+    cursor: pointer;
+}
+
+.clickableProfile:hover h4 {
+    color: #2563eb;
+}
+
+.profileImage {
+    cursor: pointer;
+}

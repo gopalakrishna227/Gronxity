@@ -1,0 +1,142 @@
+.account-settings-page {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.account-settings-card {
+  width: 100%;
+  max-width: 950px;
+  background: #ffffff;
+  border: 1px solid #e7ebf3;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.account-settings-header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #0f172a;
+}
+
+.account-settings-header p {
+  margin: 10px 0 24px;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.account-settings-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.account-section {
+  border: 1px solid #e8eef8;
+  border-radius: 20px;
+  background: #fbfdff;
+  padding: 22px;
+}
+
+.danger-section {
+  border: 1px solid #fecaca;
+  background: #fff7f7;
+}
+
+.section-title-wrap {
+  margin-bottom: 18px;
+}
+
+.section-title-wrap h2 {
+  margin: 0 0 6px;
+  font-size: 21px;
+  color: #0f172a;
+}
+
+.section-title-wrap p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  width: 100%;
+  border: 1px solid #dbe4f0;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease;
+  background: #ffffff;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
+}
+
+.primary-btn,
+.danger-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  min-width: 180px;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+.danger-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.primary-btn:disabled,
+.danger-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .account-settings-page {
+    padding: 16px;
+  }
+
+  .account-settings-card {
+    padding: 18px;
+  }
+
+  .account-section {
+    padding: 16px;
+  }
+}

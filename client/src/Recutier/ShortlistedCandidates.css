@@ -1,0 +1,94 @@
+.applications-top-tabs {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0 22px;
+  flex-wrap: wrap;
+}
+
+.applications-tab-btn {
+  border: none;
+  outline: none;
+  background: #eef3ff;
+  color: #1e293b;
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.applications-tab-btn:hover {
+  background: #dde7ff;
+}
+
+.applications-tab-btn.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+.detail-action-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.shortlist-btn,
+.reject-btn {
+  border: none;
+  outline: none;
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.25s ease;
+}
+
+.shortlist-btn {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.shortlist-btn:hover {
+  background: #bbf7d0;
+}
+
+.reject-btn {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.reject-btn:hover {
+  background: #fecaca;
+}
+
+.shortlist-btn:disabled,
+.reject-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.status-shortlisted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.recruiter-applications-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+

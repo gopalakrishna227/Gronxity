@@ -1,0 +1,57 @@
+.dashboard-page {
+  min-height: 100vh;
+  background: #f4f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.dashboard-card {
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-top h1 {
+  font-size: 22px;
+}
+
+.dashboard-top button {
+  padding: 8px 16px;
+  background: red;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.dashboard-top button:hover {
+  background: darkred;
+}
+
+.admin-details p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.success {
+  color: green;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}

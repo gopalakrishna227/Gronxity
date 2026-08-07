@@ -1,0 +1,396 @@
+.recruiter-applications-page {
+  padding: 24px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.recruiter-applications-header {
+  margin-bottom: 20px;
+}
+
+.recruiter-applications-header h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  color: #111827;
+}
+
+.recruiter-applications-header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.recruiter-applications-layout {
+  display: grid;
+  grid-template-columns: 320px 360px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.job-list-panel,
+.applicant-list-panel,
+.applicant-detail-panel {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+  border: 1px solid #edf0f6;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.job-list,
+.applicant-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 72vh;
+  overflow-y: auto;
+}
+
+.job-list-card,
+.applicant-card {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #e6ebf3;
+  background: #fbfcff;
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.job-list-card:hover,
+.applicant-card:hover,
+.job-list-card.active,
+.applicant-card.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.job-list-card h3,
+.applicant-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  color: #111827;
+}
+
+.job-list-card p,
+.applicant-card p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.job-list-meta,
+.applicant-meta,
+.detail-meta,
+.video-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.job-list-footer,
+.applicant-status-row {
+  margin-top: 12px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status-published,
+.status-applied {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-draft {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-closed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.applicant-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.applicant-rank-badge {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 999px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  z-index: 1;
+}
+
+.applicant-avatar,
+.detail-avatar {
+  object-fit: cover;
+  border-radius: 50%;
+  background: #e5e7eb;
+}
+
+.applicant-avatar {
+  width: 52px;
+  height: 52px;
+}
+
+.detail-avatar {
+  width: 84px;
+  height: 84px;
+  border: 3px solid #dbeafe;
+}
+
+.detail-scroll {
+  max-height: 78vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.detail-hero {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.detail-hero-text h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  color: #111827;
+}
+
+.detail-hero-text p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.detail-section {
+  margin-bottom: 22px;
+}
+
+.detail-section h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #111827;
+}
+
+.detail-section p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.chip.primary {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.video-card,
+.timeline-card,
+.resume-preview-box {
+  border: 1px solid #e7ecf3;
+  border-radius: 14px;
+  background: #fbfdff;
+  padding: 14px;
+}
+
+.open-video-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timeline-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.timeline-top h4 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  color: #111827;
+}
+
+.timeline-top p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.resume-frame {
+  width: 100%;
+  min-height: 500px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+}
+
+.empty-state {
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+  border: 1px dashed #d8dfeb;
+  border-radius: 14px;
+  background: #fafcff;
+}
+
+@media (max-width: 1200px) {
+  .recruiter-applications-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .job-list,
+  .applicant-list,
+  .detail-scroll {
+    max-height: unset;
+  }
+}
+
+.applications-top-tabs {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0 22px;
+  flex-wrap: wrap;
+}
+
+.applications-tab-btn {
+  border: none;
+  outline: none;
+  background: #eef3ff;
+  color: #1e293b;
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.applications-tab-btn:hover {
+  background: #dde7ff;
+}
+
+.applications-tab-btn.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+.detail-action-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.shortlist-btn,
+.reject-btn {
+  border: none;
+  outline: none;
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.25s ease;
+}
+
+.shortlist-btn {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.shortlist-btn:hover {
+  background: #bbf7d0;
+}
+
+.reject-btn {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.reject-btn:hover {
+  background: #fecaca;
+}
+
+.shortlist-btn:disabled,
+.reject-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.status-shortlisted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}

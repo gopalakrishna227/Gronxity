@@ -1,0 +1,69 @@
+.help-support-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.help-support-card {
+  width: 100%;
+  max-width: 650px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e8eef8;
+}
+
+.help-support-card h1 {
+  margin: 0 0 10px;
+  font-size: 30px;
+  color: #0f172a;
+}
+
+.help-support-card p {
+  margin: 0 0 24px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.help-support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.help-support-form input,
+.help-support-form textarea {
+  width: 100%;
+  border: 1px solid #dbe4f0;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.help-support-form input:focus,
+.help-support-form textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
+}
+
+.help-support-form button {
+  border: none;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  cursor: pointer;
+}
+
+.help-support-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

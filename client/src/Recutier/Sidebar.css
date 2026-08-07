@@ -1,0 +1,138 @@
+/* ============================= */
+/* 🔥 Main Layout Container */
+/* ============================= */
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background: #1a70c7;
+  
+}
+
+/* ============================= */
+/* 🔥 Sidebar (Desktop) */
+/* ============================= */
+
+.sidebar {
+  width: 240px;
+  background: #ffffff;
+  padding: 20px;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo */
+.logo {
+  margin-bottom: 5px;
+  color: #751aff;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.tagline {
+  font-size: 12px;
+  margin-bottom: 25px;
+  color: #6b7280;
+}
+
+/* ============================= */
+/* 🔥 Sidebar Items */
+/* ============================= */
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  color: #374151;
+}
+
+.sidebar-item:hover {
+  background: #f3f4f6;
+  transform: translateX(3px);
+}
+
+/* Active Item */
+.sidebar-item.active {
+  background: #eef2ff;
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.sidebar-item span {
+  font-size: 14px;
+}
+
+/* ============================= */
+/* 🔥 Content Area */
+/* ============================= */
+
+.content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* ============================= */
+/* 🔥 MOBILE VERSION */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  /* Bottom Navigation */
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    border-right: none;
+    border-top: 1px solid #e5e7eb;
+    z-index: 1000;
+  }
+
+  /* Hide logo in mobile */
+  .logo,
+  .tagline {
+    display: none;
+  }
+
+  /* Sidebar items mobile */
+  .sidebar-item {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 11px;
+    margin-bottom: 0;
+    padding: 6px;
+  }
+
+  .sidebar-item span {
+    font-size: 10px;
+  }
+
+  /* Hide some items in mobile */
+  .mobile-hide {
+    display: none;
+  }
+
+  /* 🔥 IMPORTANT FIX: prevent content hidden behind bottom nav */
+  .content {
+    padding: 20px;
+    padding-bottom: 100px; /* More than sidebar height */
+  }
+}

@@ -1,0 +1,77 @@
+.admin-course-details-page {
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.admin-course-details-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.admin-course-details-back-btn,
+.admin-course-details-delete-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.admin-course-details-back-btn {
+  background: #111827;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-course-details-delete-btn {
+  background: #ef4444;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-course-details-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+}
+
+.admin-course-video-box {
+  background: white;
+  padding: 18px;
+  border-radius: 20px;
+}
+
+.admin-course-video-frame {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.admin-course-details-info {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.admin-course-comments-box {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.admin-course-comment-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.admin-course-details-empty {
+  padding: 40px;
+  text-align: center;
+  color: #64748b;
+}

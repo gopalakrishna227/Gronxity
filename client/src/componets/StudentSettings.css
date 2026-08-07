@@ -1,0 +1,233 @@
+.student-settings-page {
+  height: 100vh;
+  background: linear-gradient(180deg, #f8fbff 0%, #f3f7fc 100%);
+  padding: 24px;
+  overflow: hidden; /* whole page should not scroll */
+  box-sizing: border-box;
+}
+
+.student-settings-layout {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  height: 100%;
+}
+
+.student-settings-sidebar {
+  background: #ffffff;
+  border: 1px solid #e8eef6;
+  border-radius: 28px;
+  padding: 22px 18px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  height: 100%;
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+.student-settings-sidebar-top {
+  margin-bottom: 20px;
+}
+
+.student-settings-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.student-settings-logo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.2);
+}
+
+.student-settings-logo-text {
+  margin: 0;
+  font-size: 21px;
+  color: #0f172a;
+}
+
+.student-settings-tagline {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.student-settings-menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 6px;
+}
+
+
+
+.student-settings-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px;
+  border-radius: 16px;
+  cursor: pointer;
+  color: #1e293b;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.student-settings-sidebar-item:hover {
+  background: #f3f7fd;
+  transform: translateX(3px);
+}
+
+.student-settings-sidebar-item.active {
+  background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+  color: #1d4ed8;
+  box-shadow: inset 0 0 0 1px #dbeafe;
+}
+
+.student-settings-content {
+  background: #ffffff;
+  border: 1px solid #e8eef6;
+  border-radius: 28px;
+  padding: 30px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  height: 100%;
+  overflow-y: auto;   /* only right side scroll */
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* optional nice scrollbar */
+.student-settings-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.student-settings-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 20px;
+}
+
+.student-settings-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.settings-page-box h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  color: #0f172a;
+}
+
+.settings-page-desc {
+  margin: 0 0 24px;
+  color: #64748b;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.settings-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.settings-card {
+  background: #ffffff;
+  border: 1px solid #edf2f7;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+}
+
+.settings-card h4 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 17px;
+}
+
+.settings-card p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.logout-main-btn {
+  margin-top: 8px;
+  border: none;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.logout-main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(220, 38, 38, 0.22);
+}
+
+@media (max-width: 1100px) {
+  .student-settings-page {
+    height: auto;
+    overflow: visible;
+  }
+
+  .student-settings-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .student-settings-sidebar,
+  .student-settings-content {
+    height: auto;
+    overflow: visible;
+    position: static;
+  }
+
+  .settings-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .student-settings-page {
+    padding: 14px;
+  }
+
+  .student-settings-content {
+    padding: 20px;
+  }
+
+  .settings-page-box h2 {
+    font-size: 22px;
+  }
+
+  .student-settings-sidebar-item {
+    font-size: 14px;
+  }
+}
+
+
+

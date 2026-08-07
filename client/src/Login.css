@@ -1,0 +1,45 @@
+/* ===== BACKGROUND ===== */
+.login-wrapper{
+  min-height:100vh;
+  padding:20px;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+/* ===== CARD ===== */
+.login-card{
+  width:100%;
+  max-width:420px;
+  padding:35px;
+  transition:0.3s;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:576px){
+  .login-card{
+    padding:25px 20px;
+    border-radius:18px;
+  }
+}
+
+/* ===== TABLET ===== */
+@media (min-width:577px) and (max-width:992px){
+  .login-card{
+    max-width:460px;
+    padding:40px;
+  }
+}
+
+/* ===== LAPTOP ===== */
+@media (min-width:993px){
+  .login-card{
+    max-width:420px;
+  }
+}
+
+/* ===== LARGE SCREEN ===== */
+@media (min-width:1400px){
+  .login-card{
+    max-width:480px;
+    padding:45px;
+  }
+}

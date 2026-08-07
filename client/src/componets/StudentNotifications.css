@@ -1,0 +1,258 @@
+.student-notifications-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fafafa;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.student-notifications-card {
+  width: 100%;
+  max-width: 760px;
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 14px;
+  padding: 20px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.student-notifications-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 20px 20px;
+  color: #111111;
+}
+
+.student-notifications-empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: #777777;
+  font-size: 15px;
+}
+
+.notification-group {
+  margin-top: 10px;
+}
+
+.notification-group-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 20px 12px;
+}
+
+.insta-notification-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  transition: background 0.2s ease;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.insta-notification-row:hover {
+  background: #fafafa;
+}
+
+.insta-notification-row.unread {
+  background: #fcfcff;
+}
+
+.insta-notification-left {
+  flex-shrink: 0;
+}
+
+.insta-notification-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #e5e5e5;
+}
+
+.insta-notification-center {
+  flex: 1;
+  min-width: 0;
+}
+
+.insta-notification-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #111111;
+  word-break: break-word;
+}
+
+.insta-notification-username {
+  font-weight: 700;
+  color: #111111;
+}
+
+.insta-notification-time {
+  color: #8e8e8e;
+  font-size: 14px;
+}
+
+.insta-notification-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.insta-request-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.insta-confirm-btn {
+  border: none;
+  background: #4f5cf0;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.insta-confirm-btn:hover {
+  background: #3f4be0;
+}
+
+.insta-delete-btn {
+  border: none;
+  background: #efefef;
+  color: #111111;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.insta-delete-btn:hover {
+  background: #e3e3e3;
+}
+
+.insta-follow-btn {
+  border: none;
+  background: #4f5cf0;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.insta-follow-btn:hover {
+  background: #3f4be0;
+}
+
+.insta-following-btn {
+  border: none;
+  background: #efefef;
+  color: #111111;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: 10px;
+}
+
+.insta-notification-post-preview {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+}
+
+.insta-mini-delete {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #efefef;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  color: #444444;
+  transition: 0.2s ease;
+}
+
+.insta-mini-delete:hover {
+  background: #e4e4e4;
+}
+
+@media (max-width: 768px) {
+  .student-notifications-page {
+    padding: 0;
+    background: #ffffff;
+  }
+
+  .student-notifications-card {
+    max-width: 100%;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    box-shadow: none;
+  }
+
+  .student-notifications-title {
+    font-size: 22px;
+    margin: 0 16px 18px;
+  }
+
+  .notification-group-title {
+    margin: 0 16px 12px;
+  }
+
+  .insta-notification-row {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .insta-notification-avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .insta-notification-text {
+    font-size: 14px;
+  }
+
+  .insta-confirm-btn,
+  .insta-delete-btn,
+  .insta-follow-btn,
+  .insta-following-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .insta-notification-post-preview {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+
+.insta-notification-row {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

@@ -1,0 +1,69 @@
+.admin-deletion-page {
+  padding: 24px;
+  min-height: 100vh;
+  background: #f8fbff;
+}
+
+.admin-deletion-page h1 {
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.admin-deletion-list {
+  display: grid;
+  gap: 18px;
+}
+
+.deletion-card {
+  background: #ffffff;
+  border: 1px solid #e5edf7;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.deletion-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.deletion-card-top h3 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.deletion-card p {
+  margin: 8px 0;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.deletion-status {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.deletion-status.pending {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.deletion-status.reviewed {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.deletion-status.approved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.deletion-status.rejected {
+  background: #e2e8f0;
+  color: #475569;
+}

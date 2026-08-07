@@ -1,0 +1,70 @@
+.admin-reports-page {
+  padding: 24px;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.admin-reports-page h1 {
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.admin-reports-list {
+  display: grid;
+  gap: 18px;
+}
+
+.admin-report-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.admin-report-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.report-status {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.report-status.pending {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.report-status.reviewed {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.report-status.action-taken {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.admin-report-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.admin-report-actions button {
+  border: none;
+  background: #fff7ed;
+  color: #c2410c;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}

@@ -1,0 +1,130 @@
+.notify-page {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.notify-card {
+  width: 100%;
+  max-width: 860px;
+  background: #ffffff;
+  border: 1px solid #e7ebf3;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.notify-header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #0f172a;
+}
+
+.notify-header p {
+  margin: 10px 0 24px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.notify-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notify-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid #e8eef8;
+  border-radius: 18px;
+  background: #fbfdff;
+}
+
+.notify-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.notify-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #eff6ff, #eef2ff);
+  color: #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.notify-left h3 {
+  margin: 0;
+  font-size: 17px;
+  color: #0f172a;
+}
+
+.notify-left p {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.toggle-switch {
+  width: 58px;
+  height: 32px;
+  border: none;
+  border-radius: 999px;
+  background: #cbd5e1;
+  position: relative;
+  cursor: pointer;
+  transition: 0.25s ease;
+  flex-shrink: 0;
+}
+
+.toggle-switch.active {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-switch.active .toggle-thumb {
+  left: 30px;
+}
+
+@media (max-width: 768px) {
+  .notify-page {
+    padding: 16px;
+  }
+
+  .notify-card {
+    padding: 18px;
+  }
+
+  .notify-row {
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .notify-left {
+    align-items: flex-start;
+  }
+}

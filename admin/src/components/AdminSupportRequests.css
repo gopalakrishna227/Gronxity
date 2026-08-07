@@ -1,0 +1,70 @@
+.admin-support-page {
+  padding: 24px;
+  background: #f8fbff;
+  min-height: 100vh;
+}
+
+.admin-support-page h1 {
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.admin-support-list {
+  display: grid;
+  gap: 18px;
+}
+
+.support-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid #e5edf7;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.support-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status-badge.new {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.status-badge.in-progress {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status-badge.resolved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.support-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.support-actions button {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-weight: 700;
+  cursor: pointer;
+}

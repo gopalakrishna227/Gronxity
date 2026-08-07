@@ -1,0 +1,40 @@
+# ── Dependencies ──────────────────────────────────────────────────────
+node_modules/
+**/node_modules/
+
+# ── Build outputs ─────────────────────────────────────────────────────
+dist/
+dist-ssr/
+build/
+
+# ── Environment / secrets ─────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Vector DB files (persisted embeddings – large binary, machine-specific) ──
+server/data/*.vdb
+server/data/*.vdb.tmp
+
+# ── Logs ──────────────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ── OS / Editor ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ── Misc ──────────────────────────────────────────────────────────────
+*.local
