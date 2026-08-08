@@ -7,7 +7,7 @@ How to Set up the project
 --> install mangooesdb apk   https://www.mongodb.com/try/download/shell    windows version app 
 
 1.Download code or Zip file extract it 
-2.Client folder create a  --> .env file 
+2.open Client folder create a  --> .env file 
 
 #VITE_API_URL = https://gronxtiy-backend.onrender.com
 
@@ -16,7 +16,7 @@ VITE_API_URL=http://localhost:3006
 Add this 
 
 
-3. server folder create a --> .env file
+3. open server folder create a --> .env file
 
 
 
