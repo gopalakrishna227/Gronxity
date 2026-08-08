@@ -44,7 +44,7 @@ MONGO_URI=mongodb://localhost:27017/gowaynxt
  then open http://localhost:5176/login in your local browser 
 
 
- 6. its open login page go to register here give name ,gmail id then you get the gmail otp  enter it then again login it open the homepage
+6.its open login page go to register here give name ,gmail id then you get the gmail otp  enter it then again login it open the homepage
     (in case not open refresh mangooesdb local host 27017 connention mangooesdb app)  refresh localhost page 
 
 
