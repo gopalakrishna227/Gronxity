@@ -1,13 +1,12 @@
 /* Full page */
 
 .trendingPageWrapper{
-    position: fixed;
-    top: 70px;       /* navbar height */
+   
     left: 0;
     right: 0;
     bottom: 0;
     overflow-y: auto;
-    background:#f4f6fb;
+   
 }
 
 /* Content */

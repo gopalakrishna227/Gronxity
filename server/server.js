@@ -2603,7 +2603,6 @@ app.delete("/api/student/follower/:studentId", authMiddleware, studentOnly, asyn
 // ================= conversation =================//
 
 
-
 const ReplySchema = new mongoose.Schema(
   {
     userId: {
@@ -2611,22 +2610,49 @@ const ReplySchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+
     name: {
       type: String,
       default: "",
     },
+
     profileImage: {
       type: String,
       default: "",
     },
+
     text: {
       type: String,
       required: true,
       trim: true,
     },
+
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const CommentSchema = new mongoose.Schema(
   {
@@ -2635,29 +2661,38 @@ const CommentSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+
     name: {
       type: String,
       default: "",
     },
+
     profileImage: {
       type: String,
       default: "",
     },
+
     text: {
       type: String,
       required: true,
       trim: true,
     },
+
     likes: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
     ],
+
     replies: [ReplySchema],
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
+
+
 
 // Extract hashtags from free text. Preserves the original case of the first
 // occurrence so the UI can display `#ReactJS` even when matching is case-insensitive.
@@ -3650,64 +3685,104 @@ app.post("/api/student/posts/:postId/comments", authMiddleware, studentOnly, asy
 });
 
 
-app.post("/api/student/posts/:postId/comments/:commentId/replies", authMiddleware, studentOnly, async (req, res) => {
-  try {
-    const { text } = req.body;
 
-    if (!text || !text.trim()) {
-      return res.status(400).json({ message: "Reply text is required" });
+
+
+
+
+
+
+
+app.post(
+  "/api/student/posts/:postId/comments/:commentId/replies",
+  authMiddleware,
+  studentOnly,
+  async (req, res) => {
+    try {
+      const { text } = req.body;
+
+      if (!text || !text.trim()) {
+        return res.status(400).json({
+          message: "Reply text is required",
+        });
+      }
+
+      const user = await UserModel.findById(req.user.id);
+      const post = await Post.findById(req.params.postId);
+
+      if (!user) {
+        return res.status(404).json({
+          message: "Student not found",
+        });
+      }
+
+      if (!post) {
+        return res.status(404).json({
+          message: "Post not found",
+        });
+      }
+
+      const comment = post.comments.id(req.params.commentId);
+
+      if (!comment) {
+        return res.status(404).json({
+          message: "Comment not found",
+        });
+      }
+
+      comment.replies.push({
+        userId: user._id,
+        name: user.name || "Student",
+        profileImage: user.avatar || "",
+        text: text.trim(),
+        likes: [],
+      });
+
+      await post.save();
+
+      if (String(comment.userId) !== String(user._id)) {
+        await createNotification({
+          receiverId: comment.userId,
+          receiverModel: "User",
+          senderId: user._id,
+          senderModel: "User",
+          type: "comment_reply",
+          title: "New reply",
+          message: `${user.name || "Someone"} replied to your comment`,
+          postId: post._id,
+          commentId: comment._id,
+        });
+      }
+
+      res.status(201).json({
+        message: "Reply added successfully",
+        comments: post.comments,
+      });
+    } catch (err) {
+      console.error("Add reply error:", err);
+
+      res.status(500).json({
+        message: err.message || "Server error",
+      });
     }
-
-    const user = await UserModel.findById(req.user.id);
-    const post = await Post.findById(req.params.postId);
-
-    if (!user) {
-      return res.status(404).json({ message: "Student not found" });
-    }
-
-    if (!post) {
-      return res.status(404).json({ message: "Post not found" });
-    }
-
-    const comment = post.comments.id(req.params.commentId);
-
-    if (!comment) {
-      return res.status(404).json({ message: "Comment not found" });
-    }
-
-    comment.replies.push({
-      userId: user._id,
-      name: user.name || "Student",
-      profileImage: user.avatar || "",
-      text: text.trim(),
-    });
-
-    await post.save();
-
-if (String(comment.userId) !== String(user._id)) {
-  await createNotification({
-    receiverId: comment.userId,
-    receiverModel: "User",
-    senderId: user._id,
-    senderModel: "User",
-    type: "comment_reply",
-    title: "New reply",
-    message: `${user.name || "Someone"} replied to your comment`,
-    postId: post._id,
-    commentId: comment._id,
-  });
-}
-
-
-    res.status(201).json({
-      message: "Reply added successfully",
-      comments: post.comments,
-    });
-  } catch (err) {
-    console.error("Add reply error:", err);
-    res.status(500).json({ message: err.message || "Server error" });
   }
-});
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.put("/api/student/posts/:postId/comments/:commentId/like", authMiddleware, studentOnly, async (req, res) => {
   try {
@@ -3763,6 +3838,93 @@ app.put("/api/student/posts/:postId/comments/:commentId/like", authMiddleware, s
     res.status(500).json({ message: err.message || "Server error" });
   }
 });
+
+
+
+
+// =====================================================
+// LIKE / UNLIKE REPLY
+// =====================================================
+
+app.put(
+  "/api/student/posts/:postId/comments/:commentId/replies/:replyId/like",
+  authMiddleware,
+  studentOnly,
+  async (req, res) => {
+    try {
+      const post = await Post.findById(req.params.postId);
+
+      if (!post) {
+        return res.status(404).json({
+          message: "Post not found",
+        });
+      }
+
+      const comment = post.comments.id(req.params.commentId);
+
+      if (!comment) {
+        return res.status(404).json({
+          message: "Comment not found",
+        });
+      }
+
+      const reply = comment.replies.id(req.params.replyId);
+
+      if (!reply) {
+        return res.status(404).json({
+          message: "Reply not found",
+        });
+      }
+
+      // Make sure old replies have likes array
+      if (!Array.isArray(reply.likes)) {
+        reply.likes = [];
+      }
+
+      const alreadyLiked = reply.likes.some(
+        (id) => id.toString() === req.user.id.toString()
+      );
+
+      if (alreadyLiked) {
+        reply.likes = reply.likes.filter(
+          (id) => id.toString() !== req.user.id.toString()
+        );
+      } else {
+        reply.likes.push(req.user.id);
+      }
+
+      await post.save();
+
+      res.json({
+        message: alreadyLiked
+          ? "Reply unliked"
+          : "Reply liked",
+
+        isLiked: !alreadyLiked,
+
+        replyLikesCount: reply.likes.length,
+      });
+    } catch (err) {
+      console.error("Like reply error:", err);
+
+      res.status(500).json({
+        message: err.message || "Server error",
+      });
+    }
+  }
+);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7821,6 +7983,21 @@ app.get(
     }
   }
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

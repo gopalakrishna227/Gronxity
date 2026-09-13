@@ -6,6 +6,8 @@ import {
 } from "react-icons/ri";
 import axios from "axios";
 import "./StudentJobs.css";
+import { Search, ArrowLeft } from "lucide-react";
+
 
 function getPostedTime(dateString) {
   const now = new Date();
@@ -81,6 +83,7 @@ function StudentJobs() {
 
   const [selectedJob, setSelectedJob] = useState(null);
   const [activeTab, setActiveTab] = useState("jobs");
+  const [showMobileDetails, setShowMobileDetails] = useState(false);
 
   const [applying, setApplying] = useState(false);
   const [appliedJobs, setAppliedJobs] = useState([]);
@@ -365,36 +368,47 @@ function StudentJobs() {
   return (
     <div className="jobs-container">
       <div className="filter-box">
-        <input
-          type="text"
-          placeholder="Search job title, company, location, skill..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="search-input"
-          style={{ marginRight: "20px" }}
-        />
+       <div className="search-box">
+  <Search className="search-icon" size={20} />
 
+  <input
+    type="text"
+    placeholder="Search job title, company, location, skill..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    className="search-input"
+  />
+</div>
         <div className="nav-tabs" style={{ display: "flex", gap: "5px" }}>
           <button
-            className={activeTab === "jobs" ? "tab active" : "tab"}
-            onClick={() => setActiveTab("jobs")}
-          >
-            Browse Jobs
-          </button>
+  className={activeTab === "jobs" ? "tab active" : "tab"}
+  onClick={() => {
+    setActiveTab("jobs");
+    setShowMobileDetails(false);
+  }}
+>
+  Browse Jobs
+</button>
 
           <button
-            className={activeTab === "saved" ? "tab active" : "tab"}
-            onClick={() => setActiveTab("saved")}
-          >
-            Saved Jobs
-          </button>
+  className={activeTab === "saved" ? "tab active" : "tab"}
+  onClick={() => {
+    setActiveTab("saved");
+    setShowMobileDetails(false);
+  }}
+>
+  Saved Jobs
+</button>
 
-          <button
-            className={activeTab === "applications" ? "tab active" : "tab"}
-            onClick={() => setActiveTab("applications")}
-          >
-            My Applications
-          </button>
+         <button
+  className={activeTab === "applications" ? "tab active" : "tab"}
+  onClick={() => {
+    setActiveTab("applications");
+    setShowMobileDetails(false);
+  }}
+>
+  My Applications
+</button>
         </div>
       </div>
 
@@ -547,15 +561,27 @@ function StudentJobs() {
           className="jobs-main"
           style={{ display: "flex", gap: "20px", width: "100%" }}
         >
+
+
+
+
           <div
-            className="job-list"
-            style={{
-              flex: 1,
-              height: "80vh",
-              overflowY: "auto",
-              maxWidth: "40vw",
-            }}
-          >
+  className={`job-list ${
+    showMobileDetails ? "mobile-job-list-hidden" : ""
+  }`}
+  style={{
+    flex: 1,
+    height: "80vh",
+    overflowY: "auto",
+    maxWidth: "40vw",
+  }}
+>
+
+
+
+
+
+
             {loadingJobs ? (
               <div className="no-jobs">Loading jobs...</div>
             ) : displayJobs.length > 0 ? (
@@ -565,7 +591,10 @@ function StudentJobs() {
                   className={`job-card ${
                     selectedJob?.id === job.id ? "active" : ""
                   }`}
-                  onClick={() => setSelectedJob(job)}
+                 onClick={() => {
+  setSelectedJob(job);
+  setShowMobileDetails(true);
+}}
                 >
                   <div className="job-header">
                     <img
@@ -631,18 +660,38 @@ function StudentJobs() {
             )}
           </div>
 
+
+
+
+
           <div
-            className="job-details"
-            style={{
-              flex: 2,
-              background: "#fff",
-              padding: "20px",
-              borderRadius: "12px",
-              maxWidth: "60vw",
-            }}
-          >
+  className={`job-details ${
+    showMobileDetails ? "mobile-job-details-visible" : ""
+  }`}
+  style={{
+    flex: 2,
+    background: "#fff",
+    padding: "20px",
+    borderRadius: "12px",
+    maxWidth: "60vw",
+  }}
+>
+
+
+
             {selectedJob ? (
               <>
+
+              <button
+  type="button"
+  className="mobile-job-back-btn"
+  onClick={() => setShowMobileDetails(false)}
+>
+  <ArrowLeft size={20} />
+  <span>Back to Jobs</span>
+</button>
+
+
                 <div className="job-header">
                   <img
                     src={selectedJob.logo}

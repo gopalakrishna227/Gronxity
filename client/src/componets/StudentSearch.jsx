@@ -1,13 +1,15 @@
+
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Search, X, UserPlus, Check, Trash2, Bell, UserCheck, UserMinus } from "lucide-react";
+import { Search, X, UserPlus, Check, Trash2, Bell, UserCheck, UserMinus,  ArrowLeft,
+} from "lucide-react";
 import "./StudentSearch.css";
 
 const API_BASE = import.meta.env.VITE_API_URL;
 
-export default function StudentSearch() {
-  const [query, setQuery] = useState("");
+export default function StudentSearch({ setShowStudentSearch }) 
+{  const [query, setQuery] = useState("");
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -207,11 +209,53 @@ export default function StudentSearch() {
 
   return (
     <>
-      <div className="student-search-page">
-        <div className="student-search-panel">
-          <div className="student-search-topbar">
-            <h2 className="student-search-heading">Search</h2>
+        <div className="student-search-page">
+      <div className="student-search-panel">
 
+        <div className="student-search-topbar">
+
+          <div className="mobile-student-search-header">
+
+            {/* BACK */}
+            <button
+              type="button"
+              className="mobile-search-back-btn"
+             onClick={() => navigate(-1)}
+            >
+              <ArrowLeft size={20} />
+            </button>
+
+            {/* SEARCH */}
+            <div className="mobile-search-row">
+              <div className="search-box-wrap">
+
+                <Search
+                  size={18}
+                  className="search-box-icon"
+                />
+
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={query}
+                  onChange={handleSearch}
+                  className="search-box-input"
+                />
+
+                {query && (
+                  <button
+                    type="button"
+                    className="search-clear-btn"
+                    onClick={clearSearch}
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+
+              </div>
+            </div>
+
+            {/* NOTIFICATION */}
             <button
               type="button"
               className="request-icon-btn"
@@ -219,33 +263,21 @@ export default function StudentSearch() {
               title="Incoming requests"
             >
               <Bell size={20} />
+
               {requestCount > 0 && (
                 <span className="request-badge">
                   {requestCount > 99 ? "99+" : requestCount}
                 </span>
               )}
             </button>
+
           </div>
 
-          <div className="search-box-wrap">
-            <Search size={18} className="search-box-icon" />
-            <input
-              type="text"
-              placeholder="Search"
-              value={query}
-              onChange={handleSearch}
-              className="search-box-input"
-            />
-            {query && (
-              <button
-                type="button"
-                className="search-clear-btn"
-                onClick={clearSearch}
-              >
-                <X size={16} />
-              </button>
-            )}
-          </div>
+        </div>
+
+
+
+
 
           <div className="search-results-list">
             {loading ? (
@@ -372,3 +404,23 @@ export default function StudentSearch() {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -24,6 +24,7 @@ import {
   FileText,
   FolderKanban,
   MoreVertical,
+Settings,
 } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import ATSResumeDownload from "./ATSResumeDownload";
@@ -310,7 +311,7 @@ function sortEducation(list = []) {
   });
 }
 
-export default function ProfilePage() {
+export default function ProfilePage({ onSettingsClick }) {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -354,6 +355,23 @@ export default function ProfilePage() {
   coverImage: false,
   introVideo: false,
 });
+  const [mobileSection, setMobileSection] = useState("posts");
+
+const [isMobile, setIsMobile] = useState(
+  window.innerWidth <= 768
+);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []);
 
   const actionsRef = useRef(null);
 
@@ -1039,6 +1057,12 @@ const handleDeleteContent = async (content) => {
       </div>
     );
   }
+
+
+
+
+  if (!isMobile) {
+
 
   return (
     <div className="profile-page">
@@ -2712,4 +2736,2547 @@ const handleDeleteContent = async (content) => {
       
     </div>
   );
+
+
+
+}
+
+
+
+if (isMobile) {
+
+return (
+  <div className="gronxity-profile-page">
+    <div className="profile-scroll-container">
+      <div className="profile-wrapper">
+
+        {/* =====================================================
+            MOBILE PROFILE HERO
+        ===================================================== */}
+
+        <div className="profile-hero modern-profile-hero">
+          <div className="profile-cover modern-profile-cover">
+            <img
+              src={
+                profile.coverImage ||
+                "https://via.placeholder.com/1400x320?text=Cover+Image"
+              }
+              alt="Cover"
+            />
+
+            <div className="profile-cover-overlay" />
+
+            
+
+
+
+            <div className="hero-actions" ref={actionsRef}>
+
+              {isOwnProfile && (
+                <button
+                  type="button"
+                  className="hero-btn hero-btn-download"
+                  onClick={handleDownloadResume}
+                >
+                  <Download size={16} />
+                  <span>Resume</span>
+                </button>
+              )}
+
+              <div className="dropdown-parent">
+                <button
+                  type="button"
+                  className="hero-btn"
+                  onClick={() => {
+                    setShareOpen((prev) => !prev);
+                  }}
+                >
+                  <Share2 size={16} />
+                  <span>Share</span>
+                </button>
+
+                <Dropdown open={shareOpen}>
+                  <button
+                    type="button"
+                    className="dropdown-item"
+                    onClick={handleCopyLink}
+                  >
+                    <Copy size={16} />
+                    <span>Copy Link</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    className="dropdown-item"
+                    onClick={handleWhatsAppShare}
+                  >
+                    <MessageCircle size={16} />
+                    <span>WhatsApp Share</span>
+                  </button>
+                </Dropdown>
+
+              </div>
+                {/* 3. SETTINGS */}
+{isOwnProfile && (
+  <button
+    type="button"
+    className="mobile-cover-settings-btn"
+    onClick={onSettingsClick}
+    aria-label="Settings"
+  >
+    <Settings size={20} />
+  </button>
+)}
+            </div>
+          </div>
+
+          <div className="profile-hero-content modern-hero-content">
+            <div className="profile-header-card">
+
+              <div className="profile-avatar-wrap large-avatar-wrap">
+                <img
+                  className="profile-avatar large-profile-avatar"
+                  src={
+                    profile.avatar ||
+                    "https://via.placeholder.com/160?text=Profile"
+                  }
+                  alt={profile.name || "Profile"}
+                />
+
+                <div className="profile-status-dot" />
+              </div>
+
+              <div className="profile-main-info modern-profile-main-info">
+                <div className="profile-main-row">
+
+                  <div className="profile-identity-block">
+
+                    <div className="profile-name-row modern-profile-name-row">
+                      <h1 className="profile-name">
+                        {profile.name || "Your Name"}
+                      </h1>
+
+                      <span className="verified-badge">
+                        <CheckCircle size={14} />
+                        Verified
+                      </span>
+                    </div>
+
+                    <p className="profile-headline modern-headline">
+                      {profile.headline || "Add your headline"}
+                    </p>
+
+                    <div className="profile-meta modern-profile-meta">
+
+                      <div className="profile-meta-item">
+                        <MapPin size={15} />
+                        <span>
+                          {profile.location || "Add location"}
+                        </span>
+                      </div>
+
+                      <div className="profile-meta-item modern-open-work">
+                        <Briefcase size={15} />
+                        <span>{profile.openTo}</span>
+                      </div>
+
+                      <div className="profile-meta-item profile-type-chip">
+                        <GraduationCap size={15} />
+                        <span>{profile.profileType}</span>
+                      </div>
+
+                    </div>
+
+                    <div className="domain-tags modern-domain-tags">
+                      {(profile.mainSkills || [])
+                        .slice(0, 6)
+                        .map((skill, index) => (
+                          <span
+                            key={`${skill}-${index}`}
+                            className={`domain-tag ${
+                              index % 4 === 0
+                                ? "domain-blue"
+                                : index % 4 === 1
+                                  ? "domain-cyan"
+                                  : index % 4 === 2
+                                    ? "domain-green"
+                                    : "domain-purple"
+                            }`}
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                    </div>
+
+                  </div>
+
+                  <div className="profile-action-buttons modern-top-actions">
+                    {isOwnProfile ? (
+                      <button
+                        type="button"
+                        className="primary-btn edit-profile-main-btn"
+                        onClick={() => openEditor("profile")}
+                      >
+                        Edit Profile
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className="primary-btn edit-profile-main-btn"
+                        onClick={handleSendRequest}
+                        disabled={sendingRequest}
+                      >
+                        {sendingRequest ? "Sending..." : "Connect"}
+                      </button>
+                    )}
+                  </div>
+
+                </div>
+
+                <div className="profile-stats-inline modern-profile-stats-inline">
+
+                  <div
+                    className="profile-stat-inline"
+                    onClick={() => navigate("/student/connections")}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <strong>{profile.connections}</strong>
+                    <span>Connections</span>
+                  </div>
+
+                  <div
+                    className="profile-stat-inline"
+                    onClick={() => navigate("/student/follow")}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <strong>{profile.followers}</strong>
+                    <span>Followers</span>
+                  </div>
+
+                  <div className="profile-stat-inline">
+                    <strong>{completionScore}%</strong>
+                    <span>Profile Strength</span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div className="metric-grid metric-grid-three modern-metric-grid">
+
+              <div className="metric-card metric-blue">
+                <p>Profile Score</p>
+                <h3>{completionScore}%</h3>
+              </div>
+
+              <div className="metric-card metric-purple">
+                <p>Recruiter Views</p>
+                <h3>{profile.recruiterViews || 0}</h3>
+              </div>
+
+              <div className="metric-card metric-green">
+                <p>Achievements</p>
+                <h3>{achievements.length}</h3>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        {/* =====================================================
+            MOBILE SECTION SWITCHER
+        ===================================================== */}
+
+        <div className="mobile-content-switcher">
+
+          <button
+            type="button"
+            className={`mobile-switch-btn ${
+              mobileSection === "posts" ? "active" : ""
+            }`}
+            onClick={() => setMobileSection("posts")}
+          >
+            Post Content
+          </button>
+
+          <button
+            type="button"
+            className={`mobile-switch-btn ${
+              mobileSection === "profile" ? "active" : ""
+            }`}
+            onClick={() => setMobileSection("profile")}
+          >
+            Profile Content
+          </button>
+
+        </div>
+
+
+        {/* =====================================================
+            MOBILE POST CONTENT
+        ===================================================== */}
+
+        {mobileSection === "posts" && (
+          <div className="mobile-post-content-only">
+
+            <div className="section-card mobile-profile-section-content">
+
+              <div className="content-tabs">
+
+                <button
+                  type="button"
+                  className={`content-tab ${
+                    activeTab === "reels" ? "active" : ""
+                  }`}
+                  onClick={() => setActiveTab("reels")}
+                >
+                  <Film size={16} />
+                  <span>Reels</span>
+                </button>
+
+                <button
+                  type="button"
+                  className={`content-tab ${
+                    activeTab === "posts" ? "active" : ""
+                  }`}
+                  onClick={() => setActiveTab("posts")}
+                >
+                  <Grid3x3 size={16} />
+                  <span>Posts</span>
+                </button>
+
+                <button
+                  type="button"
+                  className={`content-tab ${
+                    activeTab === "achievements" ? "active" : ""
+                  }`}
+                  onClick={() => setActiveTab("achievements")}
+                >
+                  <Trophy size={16} />
+                  <span>Achievements</span>
+                </button>
+
+              </div>
+
+              <div className="content-grid-wrap">
+                <div className="content-grid">
+
+                  {displayContent.length > 0 ? (
+                    displayContent.map((content, index) => (
+                      <div
+                        key={content.id || `${content.type}-${index}`}
+                        className={`content-card content-card-${
+                          content.type || "post"
+                        }`}
+                        onClick={() => {
+                          if (content.type !== "achievement") {
+                            openPostViewer(content.id);
+                          }
+                        }}
+                      >
+
+                        {isOwnProfile && (
+                          <div
+                            className="content-menu-wrap"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <button
+                              type="button"
+                              className="content-menu-btn"
+                              onClick={(e) => {
+                                e.stopPropagation();
+
+                                setOpenContentMenuId((prev) =>
+                                  prev === content.id
+                                    ? null
+                                    : content.id,
+                                );
+                              }}
+                            >
+                              <MoreVertical size={18} />
+                            </button>
+
+                            {openContentMenuId === content.id && (
+                              <div className="content-menu-dropdown">
+
+                                {content.type !== "achievement" && (
+                                  <button
+                                    type="button"
+                                    className="content-menu-item"
+                                    onClick={() =>
+                                      handleAddToAchievement(content)
+                                    }
+                                  >
+                                    Add Achievement
+                                  </button>
+                                )}
+
+                                <button
+                                  type="button"
+                                  className="content-menu-item delete"
+                                  onClick={() =>
+                                    handleDeleteContent(content)
+                                  }
+                                >
+                                  Delete
+                                </button>
+
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {content.type === "reel" ? (
+                          content.thumbnail ? (
+                            <video
+                              className="content-media reel-video"
+                              src={content.thumbnail}
+                              controls
+                              playsInline
+                              muted
+                              preload="metadata"
+                            />
+                          ) : (
+                            <div className="content-media reel-video-empty">
+                              No reel added
+                            </div>
+                          )
+                        ) : (
+                          <img
+                            className="content-media"
+                            src={
+                              content.thumbnail ||
+                              "https://via.placeholder.com/400?text=Media"
+                            }
+                            alt={content.title || "Content"}
+                          />
+                        )}
+
+                        <div className="content-card-overlay" />
+
+                        <div className="content-top-badge">
+
+                          {content.type === "reel" && (
+                            <span className="mini-dark-badge insta-view-badge">
+                              <Play size={11} fill="#fff" color="#fff" />
+                              {content.views || 0}
+                            </span>
+                          )}
+
+                          {content.type === "achievement" && (
+                            <div className="mini-gold-badge">
+                              <Star
+                                size={16}
+                                fill="#fff"
+                                color="#fff"
+                              />
+                            </div>
+                          )}
+
+                        </div>
+
+                        <div className="content-bottom">
+
+                          <p className="content-title">
+                            {content.title || "Untitled"}
+                          </p>
+
+                          {content.duration && (
+                            <p className="content-sub">
+                              {content.duration}
+                            </p>
+                          )}
+
+                          {content.date && (
+                            <p className="content-sub">
+                              {content.date}
+                            </p>
+                          )}
+
+                        </div>
+
+                      </div>
+                    ))
+                  ) : (
+                    <div className="empty-state-card">
+                      <p>No content added yet.</p>
+                    </div>
+                  )}
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+
+        {/* =====================================================
+            MOBILE PROFILE CONTENT
+        ===================================================== */}
+
+        {mobileSection === "profile" && (
+          <div className="profile-layout modern-profile-layout">
+
+            <div className="left-column">
+
+              {/* Introduction Reel */}
+              <SectionCard
+                icon={Sparkles}
+                title="Introduction Reel"
+                className="mobile-profile-section-intro"
+                right={
+                  isOwnProfile && (
+                    <button
+                      type="button"
+                      className="icon-btn edit-icon-btn"
+                      onClick={() => openEditor("introVideo")}
+                    >
+                      <Pen size={16} />
+                    </button>
+                  )
+                }
+              >
+                <div className="intro-video-card modern-intro-card">
+                  {profile.introVideoUrl ? (
+                    <video
+                      className="intro-video-player"
+                      src={profile.introVideoUrl}
+                      controls
+                      playsInline
+                      preload="metadata"
+                    />
+                  ) : (
+                    <div className="intro-video-empty">
+                      No video added
+                    </div>
+                  )}
+                </div>
+              </SectionCard>
+
+
+              {/* About Me */}
+              <SectionCard
+                icon={GraduationCap}
+                title="About Me"
+                className="mobile-profile-section-about"
+                right={
+                  isOwnProfile && (
+                    <button
+                      type="button"
+                      className="icon-btn edit-icon-btn"
+                      onClick={() => openEditor("about")}
+                    >
+                      <Pen size={16} />
+                    </button>
+                  )
+                }
+              >
+                <p className="about-text">
+                  {profile.about || "Add your about section"}
+                </p>
+              </SectionCard>
+
+            </div>
+
+
+            <div className="right-column mobile-profile-details">
+
+              {/* Career Goal */}
+              <SectionCard
+                icon={Target}
+                title="Career Goal"
+                right={
+                  isOwnProfile && (
+                    <button
+                      type="button"
+                      className="icon-btn edit-icon-btn"
+                      onClick={() => openEditor("careerGoal")}
+                    >
+                      <Pen size={16} />
+                    </button>
+                  )
+                }
+              >
+                <div className="goal-box">
+                  <div className="goal-inner">
+
+                    <div className="goal-icon">
+                      <Briefcase size={20} color="#2563eb" />
+                    </div>
+
+                    <div className="goal-text">
+                      <p>
+                        {profile.careerGoal ||
+                          "Add your career goal"}
+                      </p>
+
+                      <div className="goal-note">
+                        This helps recommendations for jobs,
+                        recruiters, courses and content.
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </SectionCard>
+
+
+              {/* Skills */}
+              <SectionCard
+                icon={Code}
+                title="Skills & Interests"
+                right={
+                  isOwnProfile && (
+                    <button
+                      type="button"
+                      className="icon-btn edit-icon-btn"
+                      onClick={() => openEditor("skills")}
+                    >
+                      <Pen size={16} />
+                    </button>
+                  )
+                }
+              >
+                <div className="skills-ai-box">
+
+                  <div className="skills-wrap">
+
+                    {(profile.skills || []).length > 0 ? (
+                      profile.skills.map((skill, index) => (
+                        <span
+                          className="skill-pill"
+                          key={`${skill}-${index}`}
+                        >
+                          {skill}
+                        </span>
+                      ))
+                    ) : (
+                      <p>No skills added yet.</p>
+                    )}
+
+                  </div>
+
+                </div>
+              </SectionCard>
+
+
+              {/* Experience */}
+              <SectionCard
+                icon={Briefcase}
+                title="Experience / Internship"
+                right={
+                  isOwnProfile && (
+                    <button
+                      type="button"
+                      className="icon-btn edit-icon-btn"
+                      onClick={() => openEditor("experience")}
+                    >
+                      <Pen size={16} />
+                    </button>
+                  )
+                }
+              >
+                <div className="timeline">
+
+                  {experience.length === 0 && (
+                    <p>No experience added yet.</p>
+                  )}
+
+                  {experience.map((job, index) => (
+                    <div
+                      className="timeline-item"
+                      key={job.id || index}
+                    >
+
+                      {index !== experience.length - 1 && (
+                        <div className="timeline-line" />
+                      )}
+
+                      <div
+                        className={`timeline-dot ${
+                          index === 0
+                            ? "primary"
+                            : "secondary"
+                        }`}
+                      />
+
+                      <div className="timeline-card">
+
+                        <div className="timeline-card-top">
+
+                          <div>
+                            <h4>{job.role}</h4>
+                            <p className="timeline-company">
+                              {job.company}
+                            </p>
+                          </div>
+
+                          <span className="timeline-period">
+                            {job.period}
+                          </span>
+
+                        </div>
+
+                        <p>{job.description}</p>
+
+                        <div className="timeline-tags">
+                          {(job.tags || []).map(
+                            (tag, tagIndex) => (
+                              <span
+                                className="timeline-tag"
+                                key={`${tag}-${tagIndex}`}
+                              >
+                                #{tag}
+                              </span>
+                            ),
+                          )}
+                        </div>
+
+                      </div>
+                    </div>
+                  ))}
+
+                </div>
+              </SectionCard>
+
+
+              {/* Projects */}
+              <SectionCard
+                icon={FolderKanban}
+                title="Projects"
+                right={
+                  isOwnProfile && (
+                    <button
+                      type="button"
+                      className="icon-btn edit-icon-btn"
+                      onClick={() => openEditor("projects")}
+                    >
+                      <Pen size={16} />
+                    </button>
+                  )
+                }
+              >
+                <div className="timeline">
+
+                  {projects.length === 0 && (
+                    <p>No projects added yet.</p>
+                  )}
+
+                  {projects.map((project, index) => (
+                    <div
+                      className="timeline-item"
+                      key={project.id || index}
+                    >
+
+                      {index !== projects.length - 1 && (
+                        <div className="timeline-line" />
+                      )}
+
+                      <div
+                        className={`timeline-dot ${
+                          index === 0
+                            ? "primary"
+                            : "secondary"
+                        }`}
+                      />
+
+                      <div className="timeline-card">
+
+                        <div className="timeline-card-top">
+
+                          <div>
+                            <h4>{project.title}</h4>
+                            <p className="timeline-company">
+                              {project.techStack}
+                            </p>
+                          </div>
+
+                          <span className="timeline-period">
+                            {project.period}
+                          </span>
+
+                        </div>
+
+                        <p>{project.description}</p>
+
+                        {project.link ? (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="project-link"
+                          >
+                            View Project
+                          </a>
+                        ) : null}
+
+                      </div>
+
+                    </div>
+                  ))}
+
+                </div>
+              </SectionCard>
+
+
+              {/* Education */}
+              <SectionCard
+                icon={GraduationCap}
+                title="Education"
+                className="modern-education-section"
+                right={
+                  isOwnProfile && (
+                    <button
+                      type="button"
+                      className="icon-btn edit-icon-btn"
+                      onClick={() => openEditor("education")}
+                    >
+                      <Pen size={16} />
+                    </button>
+                  )
+                }
+              >
+                <div className="modern-education-list">
+
+                  {education.length === 0 && (
+                    <p>No education added yet.</p>
+                  )}
+
+                  {sortEducation(education).map((edu, index) => {
+
+                    const eduType =
+                      normalizeEducationType(
+                        edu.degree || "",
+                      );
+
+                    return (
+                      <div
+                        className="modern-education-card"
+                        key={edu.id || index}
+                      >
+
+                        <div className="modern-education-left">
+                          <div className="modern-education-icon">
+                            <GraduationCap size={20} />
+                          </div>
+                        </div>
+
+                        <div className="modern-education-right">
+
+                          <div className="modern-education-top">
+
+                            <span className="modern-edu-type">
+                              {eduType}
+                            </span>
+
+                            <span className="modern-edu-period">
+                              {edu.period || "Add period"}
+                            </span>
+
+                          </div>
+
+                          <h4>
+                            {edu.school || "Add institution"}
+                          </h4>
+
+                          <p>
+                            {edu.degree ||
+                              "Add degree / level"}
+                          </p>
+
+                          <div className="modern-education-footer">
+                            <span className="modern-edu-grade">
+                              Grade:{" "}
+                              {edu.grade || "Not added"}
+                            </span>
+                          </div>
+
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                </div>
+              </SectionCard>
+
+
+              {/* Highlights */}
+              <SectionCard
+                icon={Award}
+                title="Highlights"
+                right={
+                  isOwnProfile && (
+                    <button
+                      type="button"
+                      className="icon-btn edit-icon-btn"
+                      onClick={() => openEditor("highlights")}
+                    >
+                      <Pen size={16} />
+                    </button>
+                  )
+                }
+              >
+                <div className="highlights-grid">
+
+                  <div className="highlight-card highlight-blue">
+                    <p>Top Skill</p>
+                    <p>
+                      {profile.topSkill ||
+                        "Add top skill"}
+                    </p>
+                  </div>
+
+                  <div className="highlight-card highlight-purple">
+                    <p>Best Area</p>
+                    <p>
+                      {profile.bestArea ||
+                        "Add best area"}
+                    </p>
+                  </div>
+
+                </div>
+              </SectionCard>
+
+
+              {/* Availability */}
+              <SectionCard
+                icon={Briefcase}
+                title="Availability & Preferred Locations"
+                right={
+                  isOwnProfile && (
+                    <button
+                      type="button"
+                      className="icon-btn edit-icon-btn"
+                      onClick={() =>
+                        openEditor("availability")
+                      }
+                    >
+                      <Pen size={16} />
+                    </button>
+                  )
+                }
+              >
+                <div className="availability-card">
+
+                  <div className="availability-row">
+                    <span className="availability-label">
+                      Notice Period
+                    </span>
+
+                    <span className="availability-value">
+                      {profile.noticePeriod ||
+                        "Immediate"}
+                    </span>
+                  </div>
+
+                  <div className="availability-row">
+                    <span className="availability-label">
+                      Years of Experience
+                    </span>
+
+                    <span className="availability-value">
+                      {profile.yearsOfExperience ||
+                        "Not added"}
+                    </span>
+                  </div>
+
+                  <div className="availability-row availability-row-column">
+
+                    <span className="availability-label">
+                      Preferred Locations
+                    </span>
+
+                    <div className="availability-location-wrap">
+
+                      {(profile.preferredLocations || [])
+                        .length > 0 ? (
+                        profile.preferredLocations.map(
+                          (city, index) => (
+                            <span
+                              key={`${city}-${index}`}
+                              className="availability-pill"
+                            >
+                              {city}
+                            </span>
+                          ),
+                        )
+                      ) : (
+                        <span className="availability-empty">
+                          No preferred locations added
+                        </span>
+                      )}
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </SectionCard>
+
+
+              {/* Availability Edit */}
+              {isOwnProfile &&
+                editSection === "availability" && (
+                  <EditModal
+                    title="Edit Availability & Preferred Locations"
+                    onClose={() =>
+                      setEditSection("")
+                    }
+                    onSave={saveEditor}
+                    saving={saving}
+                  >
+                    <div className="form-grid">
+
+                      <div className="form-field">
+                        <label>Notice Period</label>
+
+                        <select
+                          value={
+                            profileDraft.noticePeriod ||
+                            "Immediate"
+                          }
+                          onChange={(e) =>
+                            setProfileDraft({
+                              ...profileDraft,
+                              noticePeriod:
+                                e.target.value,
+                            })
+                          }
+                        >
+                          <option value="Immediate">
+                            Immediate
+                          </option>
+                          <option value="30 Days Below">
+                            30 Days Below
+                          </option>
+                          <option value="2 Months">
+                            2 Months
+                          </option>
+                        </select>
+                      </div>
+
+                      <div className="form-field">
+                        <label>
+                          Years of Experience
+                        </label>
+
+                        <select
+                          value={
+                            profileDraft.yearsOfExperience ||
+                            ""
+                          }
+                          onChange={(e) =>
+                            setProfileDraft({
+                              ...profileDraft,
+                              yearsOfExperience:
+                                e.target.value,
+                            })
+                          }
+                        >
+                          <option value="">
+                            Select experience
+                          </option>
+                          <option value="Fresher">
+                            Fresher
+                          </option>
+                          <option value="0-1 Years">
+                            0-1 Years
+                          </option>
+                          <option value="1-2 Years">
+                            1-2 Years
+                          </option>
+                          <option value="2-3 Years">
+                            2-3 Years
+                          </option>
+                          <option value="3-5 Years">
+                            3-5 Years
+                          </option>
+                          <option value="5-7 Years">
+                            5-7 Years
+                          </option>
+                          <option value="7-10 Years">
+                            7-10 Years
+                          </option>
+                          <option value="10+ Years">
+                            10+ Years
+                          </option>
+                        </select>
+                      </div>
+
+                      <div className="form-field full-width">
+                        <label>
+                          Preferred Locations
+                          (select up to 3)
+                        </label>
+
+                        <div className="checkbox-grid">
+                          {[
+                            "Hyderabad",
+                            "Bangalore",
+                            "Chennai",
+                            "Mumbai",
+                            "Pune",
+                            "Delhi",
+                            "Noida",
+                            "Gurgaon",
+                          ].map((city) => {
+
+                            const selected =
+                              profileDraft.preferredLocations ||
+                              [];
+
+                            return (
+                              <label
+                                key={city}
+                                className="checkbox-pill"
+                              >
+                                <input
+                                  type="checkbox"
+                                  checked={selected.includes(
+                                    city,
+                                  )}
+                                  onChange={(e) => {
+
+                                    if (
+                                      e.target.checked
+                                    ) {
+                                      if (
+                                        selected.length >=
+                                        3
+                                      ) {
+                                        return;
+                                      }
+
+                                      setProfileDraft({
+                                        ...profileDraft,
+                                        preferredLocations: [
+                                          ...selected,
+                                          city,
+                                        ],
+                                      });
+                                    } else {
+                                      setProfileDraft({
+                                        ...profileDraft,
+                                        preferredLocations:
+                                          selected.filter(
+                                            (item) =>
+                                              item !==
+                                              city,
+                                          ),
+                                      });
+                                    }
+
+                                  }}
+                                />
+
+                                <span>{city}</span>
+                              </label>
+                            );
+                          })}
+                        </div>
+
+                        <small>
+                          {
+                            (
+                              profileDraft.preferredLocations ||
+                              []
+                            ).length
+                          }
+                          /3 selected
+                        </small>
+                      </div>
+
+                    </div>
+                  </EditModal>
+                )}
+
+
+              {/* ATS Resume */}
+              <SectionCard
+                icon={FileText}
+                title="ATS Resume"
+              >
+                <div className="resume-card-box">
+
+                  <p>
+                    Open your ATS resume in a separate page.
+                  </p>
+
+                  <button
+                    type="button"
+                    className="primary-btn resume-download-btn"
+                    onClick={() =>
+                      navigate(
+                        "/student/ats-resume",
+                        {
+                          state: {
+                            profile,
+                            experience,
+                            education,
+                            projects,
+                          },
+                        },
+                      )
+                    }
+                  >
+                    <FileText size={16} />
+                    <span>
+                      Open ATS Resume
+                    </span>
+                  </button>
+
+                </div>
+              </SectionCard>
+
+            </div>
+          </div>
+        )}
+
+
+        {/* =====================================================
+            EDIT PROFILE MODALS
+        ===================================================== */}
+
+        {isOwnProfile && editSection === "profile" && (
+          <EditModal
+            title="Edit Profile"
+            onClose={() => setEditSection("")}
+            onSave={saveEditor}
+            saving={saving}
+          >
+            <div className="form-grid">
+
+              <div className="form-field">
+                <div className="form-group">
+
+                  <label>Profile Image</label>
+
+                  {profile.avatar ? (
+                    <img
+                      src={profile.avatar}
+                      alt="Profile"
+                      style={{
+                        width: "90px",
+                        height: "90px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        marginBottom: "10px",
+                        display: "block",
+                      }}
+                    />
+                  ) : null}
+
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file =
+                        e.target.files?.[0];
+
+                      if (file) {
+                        handleProfileMediaUpload(
+                          file,
+                          "avatar",
+                        );
+                      }
+                    }}
+                  />
+
+                  {mediaUploading.avatar ? (
+                    <p>
+                      Uploading profile image...
+                    </p>
+                  ) : null}
+
+                </div>
+              </div>
+
+
+              <div className="form-field">
+                <div className="form-group">
+
+                  <label>Cover Image</label>
+
+                  {profile.coverImage ? (
+                    <img
+                      src={profile.coverImage}
+                      alt="Cover"
+                      style={{
+                        width: "100%",
+                        maxWidth: "280px",
+                        height: "120px",
+                        objectFit: "cover",
+                        borderRadius: "12px",
+                        marginBottom: "10px",
+                        display: "block",
+                      }}
+                    />
+                  ) : null}
+
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file =
+                        e.target.files?.[0];
+
+                      if (file) {
+                        handleProfileMediaUpload(
+                          file,
+                          "coverImage",
+                        );
+                      }
+                    }}
+                  />
+
+                  {mediaUploading.coverImage ? (
+                    <p>
+                      Uploading cover image...
+                    </p>
+                  ) : null}
+
+                </div>
+              </div>
+
+
+              <div className="form-field">
+                <label>Name</label>
+
+                <input
+                  value={profileDraft.name}
+                  onChange={(e) =>
+                    setProfileDraft({
+                      ...profileDraft,
+                      name: e.target.value,
+                    })
+                  }
+                />
+              </div>
+
+
+              <div className="form-field">
+                <label>Headline</label>
+
+                <input
+                  value={profileDraft.headline}
+                  onChange={(e) =>
+                    setProfileDraft({
+                      ...profileDraft,
+                      headline: e.target.value,
+                    })
+                  }
+                />
+              </div>
+
+
+              <div className="form-field">
+                <label>Location</label>
+
+                <input
+                  value={profileDraft.location}
+                  onChange={(e) =>
+                    setProfileDraft({
+                      ...profileDraft,
+                      location: e.target.value,
+                    })
+                  }
+                />
+              </div>
+
+
+              <div className="form-field">
+                <label>
+                  Who you are / Open To
+                </label>
+
+                <select
+                  value={profileDraft.openTo}
+                  onChange={(e) =>
+                    setProfileDraft({
+                      ...profileDraft,
+                      openTo: e.target.value,
+                    })
+                  }
+                >
+                  {openToOptions.map((item) => (
+                    <option
+                      key={item}
+                      value={item}
+                    >
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+
+              <div className="form-field">
+                <label>Profile Type</label>
+
+                <select
+                  value={profileDraft.profileType}
+                  onChange={(e) =>
+                    setProfileDraft({
+                      ...profileDraft,
+                      profileType:
+                        e.target.value,
+                    })
+                  }
+                >
+                  {profileTypeOptions.map(
+                    (item) => (
+                      <option
+                        key={item}
+                        value={item}
+                      >
+                        {item}
+                      </option>
+                    ),
+                  )}
+                </select>
+              </div>
+
+
+              <div className="form-field full-width">
+                <label>
+                  Main Skills (max 6, comma separated)
+                </label>
+
+                <input
+                  type="text"
+                  placeholder="React, Node.js, MongoDB, JavaScript"
+                  value={mainSkillsInput}
+                  onChange={(e) =>
+                    setMainSkillsInput(
+                      e.target.value,
+                    )
+                  }
+                />
+
+                <small>
+                  {
+                    mainSkillsInput
+                      .split(",")
+                      .map((item) =>
+                        item.trim(),
+                      )
+                      .filter(Boolean)
+                      .slice(0, 6).length
+                  }
+                  /6 skills
+                </small>
+              </div>
+
+            </div>
+          </EditModal>
+        )}
+
+
+        {/* =====================================================
+            INTRO VIDEO EDIT
+        ===================================================== */}
+
+        {isOwnProfile &&
+          editSection === "introVideo" && (
+            <EditModal
+              title="Edit Introduction Video"
+              onClose={() =>
+                setEditSection("")
+              }
+              onSave={saveEditor}
+              saving={saving}
+            >
+              <div className="form-group">
+
+                <label>Intro Video</label>
+
+                {profile.introVideoUrl ? (
+                  <video
+                    src={profile.introVideoUrl}
+                    controls
+                    style={{
+                      width: "100%",
+                      maxWidth: "320px",
+                      borderRadius: "12px",
+                      marginBottom: "10px",
+                      display: "block",
+                    }}
+                  />
+                ) : null}
+
+                <input
+                  type="file"
+                  accept="video/*"
+                  onChange={(e) => {
+                    const file =
+                      e.target.files?.[0];
+
+                    if (file) {
+                      handleProfileMediaUpload(
+                        file,
+                        "introVideo",
+                      );
+                    }
+                  }}
+                />
+
+                {mediaUploading.introVideo ? (
+                  <p>
+                    Uploading intro video...
+                  </p>
+                ) : null}
+
+              </div>
+            </EditModal>
+          )}
+
+
+        {/* =====================================================
+            ABOUT EDIT
+        ===================================================== */}
+
+        {isOwnProfile &&
+          editSection === "about" && (
+            <EditModal
+              title="Edit About Me"
+              onClose={() =>
+                setEditSection("")
+              }
+              onSave={saveEditor}
+              saving={saving}
+            >
+              <div className="form-field">
+
+                <label>About</label>
+
+                <textarea
+                  rows="7"
+                  value={aboutDraft}
+                  onChange={(e) =>
+                    setAboutDraft(
+                      e.target.value,
+                    )
+                  }
+                />
+
+              </div>
+            </EditModal>
+          )}
+
+
+        {/* =====================================================
+            CAREER GOAL EDIT
+        ===================================================== */}
+
+        {isOwnProfile &&
+          editSection === "careerGoal" && (
+            <EditModal
+              title="Edit Career Goal"
+              onClose={() =>
+                setEditSection("")
+              }
+              onSave={saveEditor}
+              saving={saving}
+            >
+              <div className="form-field">
+
+                <label>Career Goal</label>
+
+                <textarea
+                  rows="6"
+                  value={careerGoalDraft}
+                  onChange={(e) =>
+                    setCareerGoalDraft(
+                      e.target.value,
+                    )
+                  }
+                />
+
+              </div>
+            </EditModal>
+          )}
+
+
+        {/* =====================================================
+            SKILLS EDIT
+        ===================================================== */}
+
+        {isOwnProfile &&
+          editSection === "skills" && (
+            <EditModal
+              title="Edit Skills & Interests"
+              onClose={() =>
+                setEditSection("")
+              }
+              onSave={saveEditor}
+              saving={saving}
+            >
+              <div className="form-field">
+
+                <label>
+                  Skills (comma separated)
+                </label>
+
+                <textarea
+                  rows="6"
+                  value={skillsDraft}
+                  onChange={(e) =>
+                    setSkillsDraft(
+                      e.target.value,
+                    )
+                  }
+                />
+
+              </div>
+            </EditModal>
+          )}
+
+
+        {/* =====================================================
+            EXPERIENCE EDIT
+        ===================================================== */}
+
+        {isOwnProfile &&
+          editSection === "experience" && (
+            <EditModal
+              title="Edit Experience / Internship"
+              onClose={() =>
+                setEditSection("")
+              }
+              onSave={saveEditor}
+              saving={saving}
+            >
+              <div className="dynamic-edit-list">
+
+                {experienceDraft.map(
+                  (item, index) => (
+                    <div
+                      className="dynamic-card"
+                      key={
+                        item.id || index
+                      }
+                    >
+                      <div className="form-grid">
+
+                        <div className="form-field">
+                          <label>Role</label>
+
+                          <input
+                            value={
+                              item.role || ""
+                            }
+                            onChange={(e) => {
+                              const arr = [
+                                ...experienceDraft,
+                              ];
+
+                              arr[index].role =
+                                e.target.value;
+
+                              setExperienceDraft(
+                                arr,
+                              );
+                            }}
+                          />
+                        </div>
+
+
+                        <div className="form-field">
+                          <label>
+                            Company
+                          </label>
+
+                          <input
+                            value={
+                              item.company ||
+                              ""
+                            }
+                            onChange={(e) => {
+                              const arr = [
+                                ...experienceDraft,
+                              ];
+
+                              arr[index].company =
+                                e.target.value;
+
+                              setExperienceDraft(
+                                arr,
+                              );
+                            }}
+                          />
+                        </div>
+
+
+                        <div className="form-field">
+                          <label>
+                            Period
+                          </label>
+
+                          <input
+                            value={
+                              item.period ||
+                              ""
+                            }
+                            onChange={(e) => {
+                              const arr = [
+                                ...experienceDraft,
+                              ];
+
+                              arr[index].period =
+                                e.target.value;
+
+                              setExperienceDraft(
+                                arr,
+                              );
+                            }}
+                          />
+                        </div>
+
+
+                        <div className="form-field full-width">
+                          <label>
+                            Description
+                          </label>
+
+                          <textarea
+                            rows="4"
+                            value={
+                              item.description ||
+                              ""
+                            }
+                            onChange={(e) => {
+                              const arr = [
+                                ...experienceDraft,
+                              ];
+
+                              arr[index].description =
+                                e.target.value;
+
+                              setExperienceDraft(
+                                arr,
+                              );
+                            }}
+                          />
+                        </div>
+
+
+                        <div className="form-field full-width">
+                          <label>
+                            Tags (comma separated)
+                          </label>
+
+                          <input
+                            value={(
+                              item.tags || []
+                            ).join(", ")}
+                            onChange={(e) => {
+                              const arr = [
+                                ...experienceDraft,
+                              ];
+
+                              arr[index].tags =
+                                e.target.value
+                                  .split(",")
+                                  .map(
+                                    (tag) =>
+                                      tag.trim(),
+                                  )
+                                  .filter(
+                                    Boolean,
+                                  );
+
+                              setExperienceDraft(
+                                arr,
+                              );
+                            }}
+                          />
+                        </div>
+
+                      </div>
+                    </div>
+                  ),
+                )}
+
+                <button
+                  className="secondary-btn add-btn"
+                  type="button"
+                  onClick={() =>
+                    setExperienceDraft(
+                      (prev) => [
+                        ...prev,
+                        {
+                          id: String(
+                            Date.now(),
+                          ),
+                          role: "",
+                          company: "",
+                          period: "",
+                          description:
+                            "",
+                          tags: [],
+                        },
+                      ],
+                    )
+                  }
+                >
+                  <Plus size={16} />
+                  Add Experience / Internship
+                </button>
+
+              </div>
+            </EditModal>
+          )}
+
+
+        {/* =====================================================
+            EDUCATION EDIT
+        ===================================================== */}
+
+        {isOwnProfile &&
+          editSection === "education" && (
+            <EditModal
+              title="Edit Education"
+              onClose={() =>
+                setEditSection("")
+              }
+              onSave={saveEditor}
+              saving={saving}
+            >
+              <div className="edit-guideline">
+                Recommended order:
+                Masters / PG, Degree,
+                Intermediate / Diploma,
+                Schooling.
+              </div>
+
+              <div className="dynamic-edit-list">
+
+                {sortEducation(
+                  educationDraft,
+                ).map((item, index) => (
+                  <div
+                    className="dynamic-card modern-edu-edit-card"
+                    key={
+                      item.id || index
+                    }
+                  >
+
+                    <div className="education-edit-badge">
+                      {normalizeEducationType(
+                        item.degree || "",
+                      )}
+                    </div>
+
+                    <div className="form-grid">
+
+                      <div className="form-field">
+                        <label>
+                          School / Institution
+                        </label>
+
+                        <input
+                          value={
+                            item.school ||
+                            ""
+                          }
+                          onChange={(e) => {
+                            const arr = [
+                              ...educationDraft,
+                            ];
+
+                            arr[index].school =
+                              e.target.value;
+
+                            setEducationDraft(
+                              sortEducation(
+                                arr,
+                              ),
+                            );
+                          }}
+                        />
+                      </div>
+
+
+                      <div className="form-field">
+                        <label>
+                          Degree / Level
+                        </label>
+
+                        <select
+                          value={
+                            item.degree ||
+                            ""
+                          }
+                          onChange={(e) => {
+                            const arr = [
+                              ...educationDraft,
+                            ];
+
+                            arr[index].degree =
+                              e.target.value;
+
+                            setEducationDraft(
+                              sortEducation(
+                                arr,
+                              ),
+                            );
+                          }}
+                        >
+                          {educationOrder.map(
+                            (eduType) => (
+                              <option
+                                key={eduType}
+                                value={
+                                  eduType
+                                }
+                              >
+                                {eduType}
+                              </option>
+                            ),
+                          )}
+                        </select>
+                      </div>
+
+
+                      <div className="form-field">
+                        <label>
+                          Period
+                        </label>
+
+                        <input
+                          value={
+                            item.period ||
+                            ""
+                          }
+                          onChange={(e) => {
+                            const arr = [
+                              ...educationDraft,
+                            ];
+
+                            arr[index].period =
+                              e.target.value;
+
+                            setEducationDraft(
+                              sortEducation(
+                                arr,
+                              ),
+                            );
+                          }}
+                        />
+                      </div>
+
+
+                      <div className="form-field">
+                        <label>
+                          Grade
+                        </label>
+
+                        <input
+                          value={
+                            item.grade ||
+                            ""
+                          }
+                          onChange={(e) => {
+                            const arr = [
+                              ...educationDraft,
+                            ];
+
+                            arr[index].grade =
+                              e.target.value;
+
+                            setEducationDraft(
+                              sortEducation(
+                                arr,
+                              ),
+                            );
+                          }}
+                        />
+                      </div>
+
+                    </div>
+                  </div>
+                ))}
+
+                <button
+                  className="secondary-btn add-btn"
+                  type="button"
+                  onClick={() =>
+                    setEducationDraft(
+                      (prev) =>
+                        sortEducation([
+                          ...prev,
+                          {
+                            id: String(
+                              Date.now(),
+                            ),
+                            school: "",
+                            degree:
+                              getNextEducationLabel(
+                                prev,
+                              ),
+                            period: "",
+                            grade: "",
+                          },
+                        ]),
+                    )
+                  }
+                >
+                  <Plus size={16} />
+                  Add Education
+                </button>
+
+              </div>
+            </EditModal>
+          )}
+
+
+        {/* =====================================================
+            PROJECTS EDIT
+        ===================================================== */}
+
+        {isOwnProfile &&
+          editSection === "projects" && (
+            <EditModal
+              title="Edit Projects"
+              onClose={() =>
+                setEditSection("")
+              }
+              onSave={saveEditor}
+              saving={saving}
+            >
+              <div className="dynamic-edit-list">
+
+                {projectsDraft.map(
+                  (item, index) => (
+                    <div
+                      className="dynamic-card"
+                      key={
+                        item.id || index
+                      }
+                    >
+                      <div className="form-grid">
+
+                        <div className="form-field">
+                          <label>
+                            Project Title
+                          </label>
+
+                          <input
+                            value={
+                              item.title ||
+                              ""
+                            }
+                            onChange={(e) => {
+                              const arr = [
+                                ...projectsDraft,
+                              ];
+
+                              arr[index].title =
+                                e.target.value;
+
+                              setProjectsDraft(
+                                arr,
+                              );
+                            }}
+                          />
+                        </div>
+
+
+                        <div className="form-field">
+                          <label>
+                            Period
+                          </label>
+
+                          <input
+                            placeholder="Example: Jan 2025 - Mar 2025"
+                            value={
+                              item.period ||
+                              ""
+                            }
+                            onChange={(e) => {
+                              const arr = [
+                                ...projectsDraft,
+                              ];
+
+                              arr[index].period =
+                                e.target.value;
+
+                              setProjectsDraft(
+                                arr,
+                              );
+                            }}
+                          />
+                        </div>
+
+
+                        <div className="form-field full-width">
+                          <label>
+                            Tech Stack
+                          </label>
+
+                          <input
+                            placeholder="React, Node.js, MongoDB"
+                            value={
+                              item.techStack ||
+                              ""
+                            }
+                            onChange={(e) => {
+                              const arr = [
+                                ...projectsDraft,
+                              ];
+
+                              arr[index].techStack =
+                                e.target.value;
+
+                              setProjectsDraft(
+                                arr,
+                              );
+                            }}
+                          />
+                        </div>
+
+
+                        <div className="form-field full-width">
+                          <label>
+                            Description
+                          </label>
+
+                          <textarea
+                            rows="4"
+                            value={
+                              item.description ||
+                              ""
+                            }
+                            onChange={(e) => {
+                              const arr = [
+                                ...projectsDraft,
+                              ];
+
+                              arr[index].description =
+                                e.target.value;
+
+                              setProjectsDraft(
+                                arr,
+                              );
+                            }}
+                          />
+                        </div>
+
+
+                        <div className="form-field full-width">
+                          <label>
+                            Project Link
+                          </label>
+
+                          <input
+                            type="url"
+                            placeholder="https://github.com/username/project"
+                            value={
+                              item.link ||
+                              ""
+                            }
+                            onChange={(e) => {
+                              const arr = [
+                                ...projectsDraft,
+                              ];
+
+                              arr[index].link =
+                                e.target.value;
+
+                              setProjectsDraft(
+                                arr,
+                              );
+                            }}
+                          />
+                        </div>
+
+                      </div>
+                    </div>
+                  ),
+                )}
+
+                <button
+                  className="secondary-btn add-btn"
+                  type="button"
+                  onClick={() =>
+                    setProjectsDraft(
+                      (prev) => [
+                        ...prev,
+                        {
+                          id: String(
+                            Date.now(),
+                          ),
+                          title: "",
+                          period: "",
+                          techStack: "",
+                          description:
+                            "",
+                          link: "",
+                        },
+                      ],
+                    )
+                  }
+                >
+                  <Plus size={16} />
+                  Add Project
+                </button>
+
+              </div>
+            </EditModal>
+          )}
+
+
+        {/* =====================================================
+            HIGHLIGHTS EDIT
+        ===================================================== */}
+
+        {isOwnProfile &&
+          editSection === "highlights" && (
+            <EditModal
+              title="Edit Highlights"
+              onClose={() =>
+                setEditSection("")
+              }
+              onSave={saveEditor}
+              saving={saving}
+            >
+              <div className="form-grid">
+
+                <div className="form-field">
+                  <label>
+                    Top Skill / Domain
+                  </label>
+
+                  <select
+                    value={
+                      highlightsDraft.topSkill
+                    }
+                    onChange={(e) =>
+                      setHighlightsDraft(
+                        (prev) => ({
+                          ...prev,
+                          topSkill:
+                            e.target.value,
+                        }),
+                      )
+                    }
+                  >
+                    <option value="">
+                      Select top skill
+                    </option>
+
+                    {topSkillOptions.map(
+                      (item) => (
+                        <option
+                          key={item}
+                          value={item}
+                        >
+                          {item}
+                        </option>
+                      ),
+                    )}
+                  </select>
+                </div>
+
+
+                <div className="form-field">
+                  <label>Best Area</label>
+
+                  <select
+                    value={
+                      highlightsDraft.bestArea
+                    }
+                    onChange={(e) =>
+                      setHighlightsDraft(
+                        (prev) => ({
+                          ...prev,
+                          bestArea:
+                            e.target.value,
+                        }),
+                      )
+                    }
+                  >
+                    <option value="">
+                      Select best area
+                    </option>
+
+                    {bestAreaOptions.map(
+                      (item) => (
+                        <option
+                          key={item}
+                          value={item}
+                        >
+                          {item}
+                        </option>
+                      ),
+                    )}
+                  </select>
+                </div>
+
+              </div>
+            </EditModal>
+          )}
+
+
+        {/* =====================================================
+            POST VIEWER
+        ===================================================== */}
+
+        {viewerOpen && (
+          <div
+            className="insta-viewer-overlay"
+            onClick={closePostViewer}
+          >
+            <div
+              className="insta-viewer-modal"
+              onClick={(e) =>
+                e.stopPropagation()
+              }
+            >
+
+              <button
+                type="button"
+                className="insta-viewer-close"
+                onClick={closePostViewer}
+              >
+                <X size={20} />
+              </button>
+
+              {viewerLoading ? (
+                <div className="insta-viewer-loading">
+                  Loading...
+                </div>
+              ) : selectedPost ? (
+                <>
+
+                  <div className="insta-viewer-left">
+
+                    {selectedPost.postType ===
+                    "video" ? (
+                      <video
+                        src={
+                          selectedPost.videoUrl ||
+                          selectedPost.thumbnail
+                        }
+                        className="insta-viewer-media"
+                        controls
+                        autoPlay
+                        playsInline
+                      />
+                    ) : (
+                      <img
+                        src={
+                          selectedPost.imageUrl ||
+                          selectedPost.thumbnail
+                        }
+                        alt={
+                          selectedPost.content ||
+                          "Post"
+                        }
+                        className="insta-viewer-media"
+                      />
+                    )}
+
+                  </div>
+
+
+                  <div className="insta-viewer-right">
+
+                    <div className="insta-viewer-header">
+
+                      <div className="insta-viewer-user">
+
+                        <img
+                          src={
+                            selectedPost.profileImage ||
+                            "https://via.placeholder.com/40?text=U"
+                          }
+                          alt={
+                            selectedPost.author
+                          }
+                          className="insta-viewer-avatar"
+                        />
+
+                        <div>
+                          <h4>
+                            {selectedPost.author ||
+                              "Student"}
+                          </h4>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+
+                    <div className="insta-viewer-comments">
+
+                      {selectedPost.content && (
+                        <div className="insta-comment-item">
+
+                          <img
+                            src={
+                              selectedPost.profileImage ||
+                              "https://via.placeholder.com/40?text=U"
+                            }
+                            alt={
+                              selectedPost.author
+                            }
+                            className="insta-comment-avatar"
+                          />
+
+                          <div>
+                            <strong>
+                              {selectedPost.author ||
+                                "Student"}
+                            </strong>
+
+                            <p>
+                              {
+                                selectedPost.content
+                              }
+                            </p>
+                          </div>
+
+                        </div>
+                      )}
+
+
+                      {(
+                        selectedPost.comments ||
+                        []
+                      ).map((comment) => (
+                        <div
+                          key={comment._id}
+                          className="insta-comment-item"
+                        >
+
+                          <img
+                            src={
+                              comment.profileImage ||
+                              "https://via.placeholder.com/40?text=U"
+                            }
+                            alt={
+                              comment.name
+                            }
+                            className="insta-comment-avatar"
+                          />
+
+                          <div className="insta-comment-body">
+
+                            <p>
+                              <strong>
+                                {comment.name ||
+                                  "Student"}
+                              </strong>{" "}
+                              {comment.text}
+                            </p>
+
+                            <span className="insta-comment-like-count">
+                              {comment.likes
+                                ?.length ||
+                                0}{" "}
+                              likes
+                            </span>
+
+
+                            {(
+                              comment.replies ||
+                              []
+                            ).map((reply) => (
+                              <div
+                                key={
+                                  reply._id
+                                }
+                                className="insta-reply-item"
+                              >
+                                <strong>
+                                  {reply.name ||
+                                    "Student"}
+                                </strong>{" "}
+                                {reply.text}
+                              </div>
+                            ))}
+
+                          </div>
+
+                        </div>
+                      ))}
+
+                    </div>
+
+
+                    <div className="insta-viewer-actions">
+
+                      <button
+                        type="button"
+                        className="insta-action-btn liked"
+                        onClick={
+                          handleViewerLike
+                        }
+                      >
+                        ❤️
+                      </button>
+
+                      <span className="insta-like-text">
+                        Liked by{" "}
+                        {selectedPost.likesCount ||
+                          0}{" "}
+                        people
+                      </span>
+
+                    </div>
+
+
+                    <div className="insta-viewer-add-comment">
+
+                      <input
+                        type="text"
+                        placeholder="Add a comment..."
+                        value={commentInput}
+                        onChange={(e) =>
+                          setCommentInput(
+                            e.target.value,
+                          )
+                        }
+                      />
+
+                      <button
+                        type="button"
+                        onClick={
+                          handleViewerAddComment
+                        }
+                      >
+                        Post
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                </>
+              ) : (
+                <div className="insta-viewer-loading">
+                  No post found
+                </div>
+              )}
+
+            </div>
+          </div>
+        )}
+
+      </div>
+    </div>
+  </div>
+);
+
+
+
+}
+
+
+
+
 }

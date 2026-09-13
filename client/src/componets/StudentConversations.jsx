@@ -20,6 +20,7 @@ import {
 import "./StudentConversations.css";
 import CallModal from "./CallModal";
 
+
 const API_BASE = import.meta.env.VITE_API_URL;
 
 const socket = io(API_BASE, {
@@ -58,6 +59,7 @@ export default function StudentConversations() {
   const [reportDescription, setReportDescription] = useState("");
   const [showReportModal, setShowReportModal] = useState(false);
 const [showDetails, setShowDetails] = useState(false);
+const [mobileChatOpen, setMobileChatOpen] = useState(false);
   const [callModal, setCallModal] = useState({
     open: false,
     type: "voice",
@@ -74,6 +76,7 @@ const [showDetails, setShowDetails] = useState(false);
   const localStreamRef = useRef(null);
   const remoteAudioRef = useRef(null);
   const remoteVideoRef = useRef(null);
+  
 
   const otherUser = useMemo(() => {
     return selectedConversation?.otherUser || null;
@@ -151,10 +154,17 @@ const [showDetails, setShowDetails] = useState(false);
     );
     setSearchedConnections(filteredConn);
   }, [search, conversations, connections]);
+useEffect(() => {
+  if (!messages.length) return;
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  requestAnimationFrame(() => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "auto",
+      block: "end",
+    });
+  });
+}, [messages]);
+
 
   useEffect(() => {
     if (!selectedConversation?._id) return;
@@ -217,16 +227,17 @@ const [showDetails, setShowDetails] = useState(false);
       setConversations(list);
       setFilteredConversations(list);
 
-      if (!selectedConversation && list.length) {
-        setSelectedConversation(list[0]);
-      } else if (selectedConversation?._id) {
-        const updatedSelected = list.find(
-          (item) => item._id === selectedConversation._id
-        );
-        if (updatedSelected) {
-          setSelectedConversation(updatedSelected);
-        }
-      }
+      if (!selectedConversation?._id && window.innerWidth > 768 && list.length) {
+  setSelectedConversation(list[0]);
+} else if (selectedConversation?._id) {
+  const updatedSelected = list.find(
+    (item) => item._id === selectedConversation._id
+  );
+
+  if (updatedSelected) {
+    setSelectedConversation(updatedSelected);
+  }
+}
     } catch (err) {
       console.error("fetchConversations error", err);
     } finally {
@@ -346,10 +357,11 @@ const openConversationFromConnection = async (connectionUser) => {
     }
 
     if (foundConversation) {
-      setSelectedConversation(foundConversation);
-      setSearch("");
-      fetchConversations(); // refresh list
-    }
+  setSelectedConversation(foundConversation);
+  setSearch("");
+  setMobileChatOpen(true);
+  fetchConversations();
+}
   } catch (err) {
     console.error("openConversation error:", err);
     alert(err?.response?.data?.message || "Failed to open chat");
@@ -558,10 +570,12 @@ const openConversationFromConnection = async (connectionUser) => {
     }
   };
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
+const scrollToBottom = () => {
+  messagesEndRef.current?.scrollIntoView({
+    behavior: "auto",
+    block: "end",
+  });
+};
   const isBlockedForMe =
     selectedConversation?.blockedBy &&
     selectedConversation?.blockedBy !== me?._id;
@@ -861,8 +875,16 @@ const openConversationFromConnection = async (connectionUser) => {
   };
 
   return (
-    <div className="student-chat-layout">
-      <div className="chat-sidebar">
+
+    <div
+  className={`student-chat-layout ${
+    mobileChatOpen ? "mobile-chat-active" : ""
+  }`}
+>
+
+
+
+<div className="chat-sidebar">
         <div className="chat-sidebar-top">
           <h2>Messages</h2>
 
@@ -917,7 +939,10 @@ const openConversationFromConnection = async (connectionUser) => {
                 className={`chat-conversation-item ${
                   selectedConversation?._id === conversation._id ? "active" : ""
                 }`}
-                onClick={() => setSelectedConversation(conversation)}
+                onClick={() => {
+  setSelectedConversation(conversation);
+  setMobileChatOpen(true);
+}}
               >
                 <img
                   src={
@@ -953,6 +978,17 @@ const openConversationFromConnection = async (connectionUser) => {
         ) : (
           <>
             <div className="chat-main-header">
+
+              <button
+    className="mobile-chat-back"
+    onClick={() => {
+      setMobileChatOpen(false);
+    }}
+    title="Back"
+  >
+    ←
+  </button>
+
               <div className="chat-main-user">
                 <img
                   src={
@@ -1232,3 +1268,12 @@ const openConversationFromConnection = async (connectionUser) => {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+

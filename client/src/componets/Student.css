@@ -1,7 +1,13 @@
+/* =========================================================
+   STUDENT DASHBOARD
+   CLEAN CSS - NO DUPLICATION
+========================================================= */
 
-/* =========================
+
+/* =========================================================
    RESET
-========================= */
+========================================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -19,12 +25,10 @@ body,
 }
 
 
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
 
-
-
-
-
-/* Main Layout */
 .dashboard-container {
   display: flex;
   width: 100vw;
@@ -32,7 +36,11 @@ body,
   background: #fff;
 }
 
-/* Sidebar */
+
+/* =========================================================
+   SIDEBAR - DESKTOP
+========================================================= */
+
 .sidebar {
   width: 88px;
   height: 100vh;
@@ -44,523 +52,541 @@ body,
   flex-direction: column;
   align-items: center;
 
-  padding: 20px 12px 25px; /* added bottom padding */
+  padding: 20px 12px 25px;
   gap: 6px;
 
   overflow-x: hidden;
   overflow-y: auto;
-    scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  position: relative;
 
   transition: width 0.3s ease;
 }
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   SIDEBAR HOVER - DESKTOP
+========================================================= */
+
 .sidebar:hover {
   width: 240px;
-}
-.sidebar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
-}
-
-
-.logo {
-  margin-bottom: 10px;
-  color: #751aff;
-  font-weight: bold;
-}
-
-.tagline {
-  font-size: 11px;
-  margin-bottom: 20px;
-  color: #6b7280;
-}
-
-/* Content */
-.content {
-  flex: 1;
-  padding: 30px;
-  overflow-y: auto;
-}
-
-/* Sidebar Item */
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px;
-  cursor: pointer;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  transition: 0.2s;
-  font-weight: 500;
-  color: #374151;
-}
-
-.sidebar-item.active {
-  background: #e5e7eb;
-  color: #2563eb;
-  font-weight: 600;
-}
-
-.sidebar-item:hover {
-  background: #f3f4f6;
-}
-
-/* ===================== */
-/* 🔥 MOBILE VERSION */
-/* ===================== */
-
-@media (max-width: 768px) {
-  .dashboard-container {
-    flex-direction: column;
-  }
-
-   .mobile-hide {
-    display: none;
-  }
-
-  .sidebar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 80px;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0;
-    border-right: none;
-    border-top: 1px solid #e5e7eb;
-  }
-
-  .logo,
-  .tagline {
-    display: none;
-  }
-
-  .sidebar-item {
-    flex-direction: column;
-    gap: 4px;
-    font-size: 10px;
-    margin-bottom: 0;
-  }
-  .sidebar-item span {
-    font-size: 10px;
-    margin-top: 4px;
-    white-space: nowrap;   /* 🔥 Prevent text from going to next line */
-  }
-
-
-  .content {
-    padding-bottom: 80px;
-  }
-}
-
-
-/* Main Layout */
-.dashboard-container {
-  display: flex;
-  height: 100vh;
-  background: #f3f4f6;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 88px; /* icon-only width */
-  background: white;
-  padding: 20px 12px;
-  border-right: 1px solid #e5e7eb;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  transition: width 0.3s ease;
-  overflow: hidden;
-  position: relative;
-}
-
-.sidebar:hover {
-  width: 240px; /* expand on hover */
   align-items: stretch;
 }
 
-.logo,
-.tagline {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-}
 
-.sidebar:hover .logo,
-.sidebar:hover .tagline {
-  opacity: 1;
-  max-height: 40px;
-}
-
-.logo {
-  margin-bottom: 6px;
-  color: #751aff;
-  font-weight: bold;
-  text-align: left;
-}
-
-.tagline {
-  font-size: 11px;
-  margin-bottom: 20px;
-  color: #6b7280;
-  text-align: left;
-}
-
-/* Content */
-.content {
-  flex: 1;
-  padding: 30px;
-  overflow-y: auto;
-}
-
-/* Sidebar Item */
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* center icon by default */
-  gap: 12px;
-  padding: 14px 12px;
-  cursor: pointer;
-  border-radius: 14px;
-  margin-bottom: 4px;
-  transition: all 0.25s ease;
-  font-weight: 500;
-  color: #374151;
-  white-space: nowrap;
-  position: relative;
-}
-
-.sidebar:hover .sidebar-item {
-  justify-content: flex-start; /* normal row when expanded */
-}
-
-.sidebar-item span {
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-  transition: all 0.2s ease;
-}
-
-.sidebar:hover .sidebar-item span {
-  opacity: 1;
-  width: auto;
-}
-
-.sidebar-item.active {
-  background: #e5e7eb;
-  color: #2563eb;
-  font-weight: 600;
-}
-
-.sidebar-item:hover {
-  background: #f3f4f6;
-}
-
-/* ===================== */
-/* MOBILE VERSION */
-/* ===================== */
-@media (max-width: 768px) {
-  .dashboard-container {
-    flex-direction: column;
-  }
-
-  .mobile-hide {
-    display: none;
-  }
-
-  .sidebar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 80px;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 8px;
-    border-right: none;
-    border-top: 1px solid #e5e7eb;
-    overflow: visible;
-  }
-
-  .sidebar:hover {
-    width: 100%;
-  }
-
-  .logo,
-  .tagline {
-    display: none;
-  }
-
-  .sidebar-item {
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    font-size: 10px;
-    margin-bottom: 0;
-    padding: 8px 6px;
-  }
-
-  .sidebar-item span {
-    opacity: 1;
-    width: auto;
-    overflow: visible;
-    font-size: 10px;
-    margin-top: 2px;
-    white-space: nowrap;
-  }
-
-  .content {
-    padding-bottom: 90px;
-  }
-}
-
-
-.dashboard-container {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  background: #f3f4f6;
-}
-
-
-/* =========================
-   RESET
-========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  background: #fff;
-}
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
-   MAIN LAYOUT
-========================= */
-.dashboard-container {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  background: #fff;
-}
-
-/* =========================
-   SIDEBAR (INSTAGRAM STYLE)
-========================= */
-.sidebar {
-  width: 88px;
-  height: 100vh;
-
-  background: #ffffff;
-  border-right: 1px solid #e5e7eb;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  padding: 20px 12px 25px; /* added bottom padding */
-  gap: 6px;
-
-  overflow-x: hidden;
-  overflow-y: auto;
-    scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-
-
-  transition: width 0.3s ease;
-}
-.sidebar:hover {
-  width: 240px;
-}
-.sidebar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
-}
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo {
   width: 100%;
+
   font-size: 22px;
   font-weight: bold;
+
   color: #751aff;
 
   opacity: 0;
+
   white-space: nowrap;
   overflow: hidden;
 
-  transition: 0.3s;
-
-  
+  transition: opacity 0.3s ease;
 }
 
 .sidebar:hover .logo {
   opacity: 1;
 }
 
+
+/* =========================================================
+   TAGLINE
+========================================================= */
+
 .tagline {
   width: 100%;
+
   font-size: 11px;
   color: #6b7280;
 
   opacity: 0;
+
   white-space: nowrap;
   overflow: hidden;
 
-  transition: 0.3s;
+  margin-bottom: 20px;
+
+  transition: opacity 0.3s ease;
 }
 
 .sidebar:hover .tagline {
   opacity: 1;
 }
 
-/* =========================
-   SIDEBAR ITEM
-========================= */
 
+/* =========================================================
+   SIDEBAR ITEM
+========================================================= */
 
 .sidebar-item {
   width: 100%;
-  min-height: 49px;  /* vv imp adjust height of icons*/
+  min-height: 49px;
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
   gap: 10px;
 
   padding: 8px 10px;
 
   border-radius: 12px;
+
   cursor: pointer;
 
   color: #374151;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  position: relative;
+
+  margin-bottom: 4px;
+
   transition: all 0.25s ease;
 }
 
 
+/* =========================================================
+   SIDEBAR ITEM TEXT
+========================================================= */
 
-
-.sidebar-item:hover {
-  background: #f3f4f6;
-}
-
-.sidebar-item.active {
-  background: #e8f0fe;
-  color: #2563eb;
-}
-
-
-/* Hide text initially */
 .sidebar-item span {
   opacity: 0;
+
   width: 0;
+
   overflow: hidden;
+
   white-space: nowrap;
 
   transition: all 0.25s ease;
 }
 
-/* Show text when sidebar expands */
+
+/* =========================================================
+   SIDEBAR EXPANDED
+========================================================= */
+
+.sidebar:hover .sidebar-item {
+  justify-content: flex-start;
+}
+
 .sidebar:hover .sidebar-item span {
   opacity: 1;
   width: auto;
 }
 
-/* =========================
+
+/* =========================================================
+   ACTIVE SIDEBAR ITEM
+========================================================= */
+
+.sidebar-item.active {
+  background: #e8f0fe;
+  color: #2563eb;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   DESKTOP HOVER
+========================================================= */
+
+.sidebar-item:hover {
+  background: #f3f4f6;
+}
+
+
+/* =========================================================
    CONTENT
-========================= */
+========================================================= */
+
 .content {
   flex: 1;
+
+  width: calc(100vw - 88px);
+
   height: 100vh;
 
   margin: 0;
   padding: 0;
 
   overflow-y: auto;
+  overflow-x: hidden;
+
   background: #ffffff;
+
+  min-width: 0;
 }
 
-/* =========================
-   MOBILE
-========================= */
+
+/* =========================================================
+   MOBILE HIDDEN ITEMS
+========================================================= */
+
+.mobile-hide {
+  display: flex;
+}
+
+
+/* =========================================================
+   MOBILE - 768px AND BELOW
+========================================================= */
+
 @media (max-width: 768px) {
+
+  /* -------------------------------------------------------
+     MAIN LAYOUT
+  ------------------------------------------------------- */
+
   .dashboard-container {
+    display: flex;
     flex-direction: column;
+
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+
+    overflow: hidden;
+
+    background: #fff;
   }
 
+
+  /* -------------------------------------------------------
+     HIDE MOBILE HIDDEN ITEMS
+  ------------------------------------------------------- */
+
   .mobile-hide {
-    display: none;
+    display: none !important;
   }
+
+
+  /* -------------------------------------------------------
+     MOBILE BOTTOM NAVIGATION
+  ------------------------------------------------------- */
 
   .sidebar {
     position: fixed;
-    bottom: 0;
+
     left: 0;
     right: 0;
+    bottom: 0;
 
     width: 100%;
     height: 75px;
 
+    display: flex;
     flex-direction: row;
+
     justify-content: space-around;
     align-items: center;
+
+    padding: 0;
+
+    background: #ffffff;
 
     border-right: none;
     border-top: 1px solid #e5e7eb;
 
-    padding: 0;
-    z-index: 999;
+    overflow: visible;
+
+    z-index: 9999;
+
+    /* NO MOBILE TRANSITION */
+    transition: none !important;
   }
 
+
+  /* -------------------------------------------------------
+     DISABLE SIDEBAR HOVER ON MOBILE
+  ------------------------------------------------------- */
+
   .sidebar:hover {
-    width: 100%;
+    width: 100% !important;
+
+    align-items: center;
+
+    transition: none !important;
   }
+
+
+  /* -------------------------------------------------------
+     HIDE LOGO AND TAGLINE
+  ------------------------------------------------------- */
 
   .logo,
   .tagline {
     display: none;
   }
 
+
+  /* -------------------------------------------------------
+     MOBILE SIDEBAR ITEM
+  ------------------------------------------------------- */
+
   .sidebar-item {
     width: auto;
+
+    min-height: auto;
+
+    display: flex;
+
     flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
     gap: 4px;
+
     padding: 8px;
+
+    margin-bottom: 0;
+
+    border-radius: 10px;
+
+    color: #374151;
+
+    /* NO MOBILE TRANSITION */
+    transition: none !important;
   }
+
+
+  /* -------------------------------------------------------
+     MOBILE ICON
+  ------------------------------------------------------- */
+
+  .sidebar-item svg {
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+  }
+
+
+  /* -------------------------------------------------------
+     MOBILE TEXT
+  ------------------------------------------------------- */
 
   .sidebar-item span {
     opacity: 1;
+
     width: auto;
+
     overflow: visible;
+
     font-size: 10px;
+
+    margin-top: 2px;
+
+    white-space: nowrap;
+
+    transition: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+     MOBILE SIDEBAR EXPANSION DISABLED
+  ------------------------------------------------------- */
+
+  .sidebar:hover .sidebar-item {
+    justify-content: center;
+  }
+
+  .sidebar:hover .sidebar-item span {
+    opacity: 1;
+
+    width: auto;
+  }
+
+
+  /* -------------------------------------------------------
+     MOBILE ACTIVE ITEM
+  ------------------------------------------------------- */
+
+  .sidebar-item.active {
+    background: transparent;
+
+    color: #2563eb;
+
+    font-weight: 600;
+
+    transition: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+     MOBILE HOVER DISABLED
+     
+     This prevents the grey background when the
+     cursor/finger moves over an icon.
+  ------------------------------------------------------- */
+
+  .sidebar-item:hover {
+    background: transparent !important;
+
+    color: inherit;
+
+    transition: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+     CONTENT
+  ------------------------------------------------------- */
+
+  .content {
+    width: 100%;
+
+    height: 100dvh;
+
+    min-height: 0;
+
+    flex: 1;
+
+    padding: 0;
+
+    padding-bottom: 75px;
+
+    overflow-x: hidden;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE - 480px AND BELOW
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .sidebar {
+    height: 70px;
+  }
+
+  .sidebar-item {
+    padding: 7px 6px;
+
+    gap: 3px;
+  }
+
+  .sidebar-item svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .sidebar-item span {
+    font-size: 9px;
   }
 
   .content {
-    padding-bottom: 80px;
+    padding-bottom: 70px;
   }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE - 360px AND BELOW
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .sidebar {
+    height: 68px;
+  }
+
+  .sidebar-item {
+    padding: 6px 4px;
+  }
+
+  .sidebar-item svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .sidebar-item span {
+    font-size: 8px;
+  }
+
+  .content {
+    padding-bottom: 68px;
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE ONLY - STORY DELETE + CLOSE BUTTON
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* X button - stays at extreme top-right */
+  .ig-global-close {
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+
+    width: 38px !important;
+    height: 38px !important;
+
+    z-index: 10001 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Delete button - clearly LEFT of X */
+  .story-delete-btn {
+    position: fixed !important;
+
+    top: 12px !important;
+    right: 60px !important;
+
+    min-width: 65px !important;
+    height: 34px !important;
+
+    z-index: 10000 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 12px !important;
+  }
+
+  /* Top action container should not interfere */
+  .insta-top-actions {
+    position: static !important;
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
 }

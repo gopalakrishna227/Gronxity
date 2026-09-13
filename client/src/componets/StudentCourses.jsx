@@ -28,6 +28,7 @@ export default function StudentCourses() {
   const [showSavedOnly, setShowSavedOnly] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
   const [showCourseProfileBox, setShowCourseProfileBox] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
 
   const [courseProfileForm, setCourseProfileForm] = useState({
     name: "",
@@ -446,21 +447,93 @@ export default function StudentCourses() {
           <h1 className="student-courses-logo">Gronxtiy</h1>
         </div>
 
-        <div className="student-courses-navbar-center">
-          <div className="student-courses-search">
-            <Search size={18} />
-            <input
-              type="text"
-              placeholder={
-                showSavedOnly
-                  ? "Search saved courses..."
-                  : "Search uploaded courses..."
-              }
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-        </div>
+
+
+
+
+        
+
+<div
+  className={`student-courses-navbar-center ${
+    mobileSearchOpen ? "mobile-search-active" : ""
+  }`}
+>
+  {/* DESKTOP / LAPTOP SEARCH */}
+  <div className="student-courses-search desktop-course-search">
+    <Search size={18} />
+
+    <input
+      type="text"
+      placeholder={
+        showSavedOnly
+          ? "Search saved courses..."
+          : "Search uploaded courses..."
+      }
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+    />
+  </div>
+
+  {/* MOBILE SEARCH ICON */}
+  <button
+    type="button"
+    className="student-courses-mobile-search-trigger"
+    onClick={() => setMobileSearchOpen(true)}
+  >
+    <Search size={22} />
+  </button>
+
+  {/* MOBILE OPEN SEARCH BAR */}
+  {mobileSearchOpen && (
+    <div className="student-courses-mobile-search-box">
+
+      <button
+        type="button"
+        className="student-courses-mobile-search-back"
+        onClick={() => setMobileSearchOpen(false)}
+      >
+        <X size={21} />
+      </button>
+
+      <input
+        type="text"
+        autoFocus
+        placeholder={
+          showSavedOnly
+            ? "Search saved courses..."
+            : "Search courses..."
+        }
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
+      <Search
+        size={21}
+        className="student-courses-mobile-search-icon"
+      />
+
+    </div>
+  )}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <div className="student-courses-navbar-right">
           <button
@@ -501,85 +574,112 @@ export default function StudentCourses() {
           </div>
         </div>
       </header>
+<main className="student-courses-main">
+  <div className="student-courses-mobile-scroll">
+    {loading ? (
+      <div className="student-courses-empty">
+        Loading courses...
+      </div>
+    ) : filteredCourses.length === 0 ? (
+      <div className="student-courses-empty">
+        {showSavedOnly
+          ? "No saved courses found"
+          : "No courses found"}
+      </div>
+    ) : (
+      <div className="student-courses-grid">
+        {filteredCourses.map((course) => (
+          <div className="student-course-card" key={course._id}>
+            
+            <div
+              className="student-course-thumb-wrap"
+              onClick={() => handleOpenPlayer(course._id)}
+            >
+              <img
+                src={
+                  course.thumbnail ||
+                  "https://via.placeholder.com/800x450?text=Course+Thumbnail"
+                }
+                alt={course.title}
+                className="student-course-thumb"
+              />
 
-      <main className="student-courses-main">
-        {loading ? (
-          <div className="student-courses-empty">Loading courses...</div>
-        ) : filteredCourses.length === 0 ? (
-          <div className="student-courses-empty">
-            {showSavedOnly ? "No saved courses found" : "No courses found"}
-          </div>
-        ) : (
-          <div className="student-courses-grid">
-            {filteredCourses.map((course) => (
-              <div className="student-course-card" key={course._id}>
-                <div
-                  className="student-course-thumb-wrap"
-                  onClick={() => handleOpenPlayer(course._id)}
-                >
-                  <img
-                    src={
-                      course.thumbnail ||
-                      "https://via.placeholder.com/800x450?text=Course+Thumbnail"
-                    }
-                    alt={course.title}
-                    className="student-course-thumb"
-                  />
-                  <div className="student-course-play-overlay">
-                    <Play size={30} />
-                  </div>
-                </div>
-
-                <div className="student-course-card-body">
-                  <div
-                    className="student-course-owner-avatar"
-                    onClick={() => handleOpenProfileCourses(course.owner?._id)}
-                  >
-                    {course.owner?.avatar ? (
-                      <img
-                        src={course.owner.avatar}
-                        alt={course.owner?.name}
-                        className="student-course-owner-img"
-                      />
-                    ) : (
-                      getInitials(course.owner?.name || "Student")
-                    )}
-                  </div>
-
-                  <div className="student-course-info">
-                    <h3 onClick={() => handleOpenPlayer(course._id)}>
-                      {course.title}
-                    </h3>
-
-                    <p
-                      className="student-course-owner-name"
-                      onClick={() => handleOpenProfileCourses(course.owner?._id)}
-                    >
-                      {course.owner?.name || "Student"}
-                    </p>
-
-                    <span className="student-course-meta">
-                      {course.views || 0} views • {course.likesCount || 0} likes
-                    </span>
-                  </div>
-
-                  <div className="student-course-card-actions">
-                    <button
-                      className={`student-course-save-btn ${
-                        course.isSaved ? "saved" : ""
-                      }`}
-                      onClick={() => handleSaveCourse(course._id)}
-                    >
-                      <Bookmark size={16} />
-                      <span>{course.isSaved ? "Saved" : "Save"}</span>
-                    </button>
-                  </div>
-                </div>
+              <div className="student-course-play-overlay">
+                <Play size={30} />
               </div>
-            ))}
+            </div>
+
+            <div className="student-course-card-body">
+
+              <div
+                className="student-course-owner-avatar"
+                onClick={() =>
+                  handleOpenProfileCourses(course.owner?._id)
+                }
+              >
+                {course.owner?.avatar ? (
+                  <img
+                    src={course.owner.avatar}
+                    alt={course.owner?.name}
+                    className="student-course-owner-img"
+                  />
+                ) : (
+                  getInitials(course.owner?.name || "Student")
+                )}
+              </div>
+
+              <div className="student-course-info">
+
+                <h3
+                  onClick={() =>
+                    handleOpenPlayer(course._id)
+                  }
+                >
+                  {course.title}
+                </h3>
+
+                <p
+                  className="student-course-owner-name"
+                  onClick={() =>
+                    handleOpenProfileCourses(course.owner?._id)
+                  }
+                >
+                  {course.owner?.name || "Student"}
+                </p>
+
+                <span className="student-course-meta">
+                  {course.views || 0} views •{" "}
+                  {course.likesCount || 0} likes
+                </span>
+
+              </div>
+
+              <div className="student-course-card-actions">
+
+                <button
+                  className={`student-course-save-btn ${
+                    course.isSaved ? "saved" : ""
+                  }`}
+                  onClick={() =>
+                    handleSaveCourse(course._id)
+                  }
+                >
+                  <Bookmark size={16} />
+
+                  <span>
+                    {course.isSaved ? "Saved" : "Save"}
+                  </span>
+                </button>
+
+              </div>
+
+            </div>
           </div>
-        )}
-      </main>
+        ))}
+      </div>
+    )}
+  </div>
+</main>
 
       {showUpload && (
         <div

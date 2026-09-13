@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";import axios from "axios";
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
 import {
   Shield,
   UserCog,
@@ -20,43 +21,49 @@ import HelpSupport from "./HelpSupport";
 import ReportUser from "./ReportUser";
 import StudentSaved from "./StudentSaved";
 
-
-
-
-
-
-
-
 export default function StudentSettings() {
   const navigate = useNavigate();
-  const [active, setActive] = useState("Privacy Settings");
+const [active, setActive] = useState(
+  window.innerWidth <= 768 ? "" : "Privacy Settings"
+);
+
+const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const contentRef = useRef(null);
 
   const menuItems = [
     { name: "Privacy Settings", icon: <Shield size={20} /> },
     { name: "Account Settings", icon: <UserCog size={20} /> },
-     { name: "Saved", icon: <Bookmark size={20} /> },
+    { name: "Saved", icon: <Bookmark size={20} /> },
     { name: "Profile Visibility", icon: <Eye size={20} /> },
     { name: "Notification Preferences", icon: <Bell size={20} /> },
     { name: "Blocked Users", icon: <Lock size={20} /> },
     { name: "Help & Support", icon: <HelpCircle size={20} /> },
     { name: "Logout", icon: <LogOut size={20} /> },
-   
   ];
+
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTo({
+        top: 0,
+        behavior: "smooth", // use "auto" if you don't want animation
+      });
+    }
+  }, [active]);
+
 
 
 
   useEffect(() => {
-  if (contentRef.current) {
-    contentRef.current.scrollTo({
-      top: 0,
-      behavior: "smooth", // use "auto" if you don't want animation
-    });
-  }
-}, [active]);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
+    window.addEventListener("resize", handleResize);
 
-
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleLogout = async () => {
     const confirmLogout = window.confirm("Are you sure you want to logout?");
@@ -66,7 +73,7 @@ export default function StudentSettings() {
       await axios.post(
         `${import.meta.env.VITE_API_URL}/logout`,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
     } catch (err) {
       console.error("Logout error:", err.response?.data || err.message);
@@ -75,6 +82,18 @@ export default function StudentSettings() {
       navigate("/login");
     }
   };
+
+  function SidebarItem({ icon, text, active, onClick }) {
+    return (
+      <div
+        onClick={onClick}
+        className={`student-settings-sidebar-item ${active ? "active" : ""}`}
+      >
+        {icon}
+        <span>{text}</span>
+      </div>
+    );
+  }
 
   const renderRightPage = () => {
     switch (active) {
@@ -107,62 +126,222 @@ export default function StudentSettings() {
           </div>
         );
       default:
-        return <PrivacySettingsPage />;
+        return <PrivacySettings />;
     }
   };
 
+  
+/* =========================================================
+   MOBILE VERSION
+========================================================= */
+
+if (isMobile) {
   return (
-    <div className="student-settings-page">
-      <div className="student-settings-layout">
-        <div className="student-settings-sidebar">
-          <div className="student-settings-sidebar-top">
-            <div className="student-settings-logo-wrap">
-              <div className="student-settings-logo-icon">
-                <Settings size={20} />
-              </div>
-              <div>
-                <h2 className="student-settings-logo-text">Settings</h2>
-                <p className="student-settings-tagline">Manage your account</p>
-              </div>
+    <div className="student-settings-mobile-page">
+
+
+            <div className="student-settings-mobile-scroll">
+
+      {/* ================================================
+          MOBILE SETTINGS LIST
+      ================================================ */}
+
+      {!active && (
+        <div className="student-settings-mobile-list">
+
+          {/* MOBILE HEADER */}
+
+          <div className="student-settings-mobile-header">
+
+            <div className="student-settings-mobile-header-icon">
+              <Settings size={20} />
             </div>
+
+            <div>
+              <h2 className="student-settings-mobile-title">
+                Settings
+              </h2>
+
+              <p className="student-settings-mobile-subtitle">
+                Manage your account
+              </p>
+            </div>
+
           </div>
 
-          <div className="student-settings-menu">
+
+          {/* MOBILE MENU */}
+
+          <div className="student-settings-mobile-menu">
+
             {menuItems.map((item) => (
-              <SidebarItem
+              <div
                 key={item.name}
-                icon={item.icon}
-                text={item.name}
-                active={active === item.name}
+                className="student-settings-mobile-item"
                 onClick={() => setActive(item.name)}
-              />
+              >
+
+                <div className="student-settings-mobile-item-left">
+
+                  <div className="student-settings-mobile-item-icon">
+                    {item.icon}
+                  </div>
+
+                  <span>
+                    {item.name}
+                  </span>
+
+                </div>
+
+                <span className="student-settings-mobile-arrow">
+                  ›
+                </span>
+
+              </div>
             ))}
+
           </div>
+
         </div>
+      )}
 
-        <div
-  ref={contentRef}
-  className="student-settings-content"
->
-  {renderRightPage()}
+
+      {/* ================================================
+          MOBILE INDIVIDUAL SETTING PAGE
+      ================================================ */}
+
+      {active && (
+        <div className="student-settings-mobile-detail">
+
+          {/* MOBILE BACK HEADER */}
+
+          <div className="student-settings-mobile-detail-header">
+
+            <button
+              type="button"
+              className="student-settings-mobile-back-btn"
+              onClick={() => setActive("")}
+              aria-label="Back to settings"
+            >
+              ←
+            </button>
+
+            <h2>
+              {active}
+            </h2>
+
+          </div>
+
+
+          {/* SETTING CONTENT */}
+
+          <div
+            ref={contentRef}
+            className="student-settings-mobile-detail-content"
+          >
+            {renderRightPage()}
+          </div>
+
+        </div>
+      )}
+
 </div>
-
-
-
-
-      </div>
     </div>
   );
 }
 
-function SidebarItem({ icon, text, active, onClick }) {
-  return (
-    <div
-      onClick={onClick}
-      className={`student-settings-sidebar-item ${active ? "active" : ""}`}
-    >
-      {icon}
-      <span>{text}</span>
+
+/* =========================================================
+   DESKTOP / LAPTOP VERSION
+   YOUR EXISTING CODE
+========================================================= */
+
+return (
+  <div className="student-settings-page">
+    <div className="student-settings-layout">
+
+      <div className="student-settings-sidebar">
+
+        <div className="student-settings-sidebar-top">
+
+          <div className="student-settings-logo-wrap">
+
+            <div className="student-settings-logo-icon">
+              <Settings size={20} />
+            </div>
+
+            <div>
+              <h2 className="student-settings-logo-text">
+                Settings
+              </h2>
+
+              <p className="student-settings-tagline">
+                Manage your account
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div className="student-settings-menu">
+
+          {menuItems.map((item) => (
+            <SidebarItem
+              key={item.name}
+              icon={item.icon}
+              text={item.name}
+              active={active === item.name}
+              onClick={() => setActive(item.name)}
+            />
+          ))}
+
+        </div>
+
+      </div>
+
+
+      <div
+        ref={contentRef}
+        className="student-settings-content"
+      >
+        {renderRightPage()}
+      </div>
+
     </div>
-  );
+  </div>
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

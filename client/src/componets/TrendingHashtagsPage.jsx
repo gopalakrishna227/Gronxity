@@ -11,6 +11,7 @@ export default function TrendingHashtagsPage() {
   const [filteredTags, setFilteredTags] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     fetch(`${API_BASE}/api/student/all-hashtags`, {

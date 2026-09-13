@@ -416,3 +416,1223 @@ button:disabled {
   color: white;
   border-color: #4f46e5;
 }
+
+
+
+
+@media (max-width: 768px) {
+  .student-post-wrapper {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+
+    padding: 14px;
+    padding-bottom: 100px;
+
+    display: block;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    box-sizing: border-box;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .student-post-wrapper::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  .student-post-wrapper::-webkit-scrollbar-track {
+    background: #eef2f7;
+  }
+
+  .student-post-wrapper::-webkit-scrollbar-thumb {
+    background: #aeb9cc;
+    border-radius: 10px;
+  }
+
+  .student-post-card {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 18px;
+
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .post-btn-row {
+    padding-bottom: 30px;
+  }
+}
+
+
+
+
+/* =========================================================
+   INSTAGRAM STYLE CROP PAGE
+========================================================= */
+
+.instagram-crop-page {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  width: 100%;
+  height: 100dvh;
+
+  background: #111;
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CROP HEADER
+========================================================= */
+
+.crop-header {
+  height: 52px;
+  min-height: 52px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 14px;
+
+  box-sizing: border-box;
+
+  border-bottom: 1px solid #ddd;
+
+  z-index: 20;
+}
+
+.crop-header h2 {
+  margin: 0;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  color: #111;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.crop-back-btn {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  color: #111;
+
+  padding: 0;
+}
+
+.crop-next-btn {
+  border: none;
+  background: transparent;
+
+  color: #4f46e5;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  padding: 8px 2px;
+}
+
+
+/* =========================================================
+   MAIN CROP AREA
+========================================================= */
+
+.crop-main-area {
+  position: relative;
+
+  flex: 1;
+
+  min-height: 0;
+
+  background: #111;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   IMAGE CONTAINER
+========================================================= */
+
+.crop-image-container {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: #111;
+}
+
+
+/* =========================================================
+   REACT EASY CROP
+========================================================= */
+
+.crop-image-container .reactEasyCrop_Container {
+  background: #111;
+}
+
+.crop-image-container .reactEasyCrop_CropArea {
+  border: 1px solid rgba(255, 255, 255, 0.95);
+}
+
+.crop-image-container .reactEasyCrop_CropAreaGrid::before,
+.crop-image-container .reactEasyCrop_CropAreaGrid::after {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================================
+   ASPECT RATIO MENU
+========================================================= */
+
+.crop-ratio-menu {
+  position: absolute;
+
+  left: 12px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 122px;
+
+  background: rgba(20, 20, 20, 0.92);
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  z-index: 30;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+}
+
+.crop-ratio-btn {
+  width: 100%;
+
+  min-height: 62px;
+
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+
+  background: transparent;
+
+  color: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 14px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.crop-ratio-btn:last-child {
+  border-bottom: none;
+}
+
+.crop-ratio-btn.active {
+  border: 2px solid #1683ff;
+
+  border-radius: 10px;
+
+  background: rgba(30, 30, 30, 0.95);
+
+  box-sizing: border-box;
+}
+
+.crop-ratio-btn svg {
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   RATIO ICONS
+========================================================= */
+
+.ratio-icon {
+  display: block;
+
+  border: 2px solid #8c96a5;
+
+  border-radius: 4px;
+
+  box-sizing: border-box;
+}
+
+.ratio-square {
+  width: 21px;
+  height: 21px;
+}
+
+.ratio-portrait {
+  width: 16px;
+  height: 22px;
+}
+
+.ratio-landscape {
+  width: 25px;
+  height: 15px;
+}
+
+
+/* =========================================================
+   BOTTOM CONTROLS
+========================================================= */
+
+.crop-bottom-controls {
+  height: 70px;
+  min-height: 70px;
+
+  background: #f7f7f7;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 0 16px;
+
+  box-sizing: border-box;
+}
+
+.crop-control-btn {
+  width: 42px;
+  height: 42px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #444;
+
+  font-size: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   ZOOM
+========================================================= */
+
+.zoom-control {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex: 1;
+
+  max-width: 250px;
+}
+
+.zoom-control span {
+  font-size: 17px;
+  color: #666;
+}
+
+.zoom-control input {
+  flex: 1;
+
+  accent-color: #4f46e5;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .instagram-crop-page {
+    height: 100dvh;
+  }
+
+  .crop-header {
+    height: 52px;
+    min-height: 52px;
+
+    padding: 0 12px;
+  }
+
+  .crop-header h2 {
+    font-size: 16px;
+  }
+
+  .crop-next-btn {
+    font-size: 15px;
+  }
+
+  .crop-main-area {
+    flex: 1;
+  }
+
+  .crop-ratio-menu {
+    left: 6px;
+
+    width: 134px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+  }
+
+  .crop-ratio-btn {
+    min-height: 62px;
+
+    padding: 0 12px;
+
+    font-size: 13px;
+  }
+
+  .crop-bottom-controls {
+    height: 72px;
+    min-height: 72px;
+
+    padding: 0 14px;
+  }
+
+  .crop-control-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .crop-ratio-menu {
+    width: 116px;
+  }
+
+  .crop-ratio-btn {
+    min-height: 58px;
+
+    padding: 0 10px;
+
+    font-size: 12px;
+  }
+
+  .crop-bottom-controls {
+    height: 65px;
+    min-height: 65px;
+  }
+
+}
+
+
+
+
+/* =========================================================
+   INSTAGRAM STYLE VIDEO EDITOR
+========================================================= */
+
+.instagram-video-editor {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+
+  width: 100%;
+  height: 100dvh;
+
+  background: #111;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.video-editor-header {
+  height: 52px;
+  min-height: 52px;
+
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px;
+
+  position: relative;
+
+  border-bottom: 1px solid #ddd;
+
+  z-index: 20;
+}
+
+.video-editor-header h2 {
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  margin: 0;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  color: #111;
+}
+
+.video-editor-back {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  color: #111;
+}
+
+.video-editor-next {
+  border: none;
+  background: transparent;
+
+  color: #4055e8;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.video-editor-body {
+  flex: 1;
+
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(380px, 1fr)
+    minmax(380px, 1fr);
+
+  background: #111;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   VIDEO PREVIEW
+========================================================= */
+
+.video-editor-preview {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  background: #111;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.video-editor-main-video {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+
+  background: #111;
+}
+
+
+/* =========================================================
+   CENTER PLAY
+========================================================= */
+
+.video-center-play {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(
+    -50%,
+    -50%
+  );
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: rgba(
+    255,
+    255,
+    255,
+    0.92
+  );
+
+  color: #111;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 20px
+    rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   SOUND BUTTON
+========================================================= */
+
+.video-sound-btn {
+  position: absolute;
+
+  right: 18px;
+  bottom: 18px;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: rgba(
+    0,
+    0,
+    0,
+    0.65
+  );
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   RIGHT CONTROLS
+========================================================= */
+
+.video-editor-controls {
+  background: #fff;
+
+  padding: 26px 18px;
+
+  overflow-y: auto;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.video-editor-section {
+  margin-bottom: 30px;
+}
+
+.video-editor-section h3 {
+  margin: 0 0 16px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #111;
+}
+
+.video-section-title-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 14px;
+}
+
+.video-section-title-row h3 {
+  margin: 0;
+}
+
+.select-cover-computer {
+  border: none;
+
+  background: transparent;
+
+  color: #3f51e8;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   COVER STRIP
+========================================================= */
+
+.cover-frame-strip {
+  width: 100%;
+
+  height: 100px;
+
+  display: flex;
+
+  gap: 3px;
+
+  overflow: hidden;
+
+  border-radius: 6px;
+}
+
+.cover-frame {
+  position: relative;
+
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100px;
+
+  padding: 0;
+
+  border: 2px solid transparent;
+
+  background: #111;
+
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.cover-frame img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.cover-frame.selected {
+  border-color: #111;
+
+  border-radius: 6px;
+
+  box-shadow:
+    0 0 0 1px #fff inset;
+}
+
+
+/* =========================================================
+   TRIM
+========================================================= */
+
+.trim-section {
+  margin-top: 10px;
+}
+
+.trim-preview-strip {
+  position: relative;
+
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+
+  overflow: hidden;
+
+  border-radius: 6px;
+
+  background: #111;
+}
+
+.trim-preview-strip img {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 70px;
+
+  object-fit: cover;
+}
+
+.trim-selection {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+
+  box-sizing: border-box;
+
+  pointer-events: none;
+
+  background: transparent;
+}
+
+
+/* =========================================================
+   RANGE
+========================================================= */
+
+.trim-range-wrapper {
+  position: relative;
+
+  height: 24px;
+
+  margin-top: -12px;
+}
+
+.trim-range {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+
+  margin: 0;
+
+  pointer-events: none;
+
+  appearance: none;
+
+  background: transparent;
+}
+
+.trim-range::-webkit-slider-thumb {
+  appearance: none;
+
+  width: 14px;
+  height: 34px;
+
+  border-radius: 4px;
+
+  background: #fff;
+
+  border: 2px solid #111;
+
+  cursor: grab;
+
+  pointer-events: auto;
+}
+
+.trim-range::-moz-range-thumb {
+  width: 14px;
+  height: 34px;
+
+  border-radius: 4px;
+
+  background: #fff;
+
+  border: 2px solid #111;
+
+  cursor: grab;
+
+  pointer-events: auto;
+}
+
+.trim-start {
+  z-index: 3;
+}
+
+.trim-end {
+  z-index: 4;
+}
+
+
+/* =========================================================
+   TIME LABELS
+========================================================= */
+
+.trim-time-labels {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 4px;
+
+  font-size: 12px;
+
+  color: #777;
+}
+
+
+/* =========================================================
+   SOUND ROW
+========================================================= */
+
+.video-sound-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 10px;
+
+  font-size: 15px;
+
+  color: #222;
+}
+
+
+/* =========================================================
+   SOUND SWITCH
+========================================================= */
+
+.sound-switch {
+  width: 42px;
+  height: 26px;
+
+  border: none;
+
+  border-radius: 20px;
+
+  background: #222;
+
+  padding: 3px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.sound-switch span {
+  display: block;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  transform: translateX(0);
+
+  transition: 0.2s;
+}
+
+.sound-switch.on span {
+  transform: translateX(16px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .video-editor-body {
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+  .video-editor-controls {
+    padding: 20px 14px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .instagram-video-editor {
+    height: 100dvh;
+  }
+
+  .video-editor-header {
+    height: 52px;
+    min-height: 52px;
+
+    padding: 0 12px;
+  }
+
+  .video-editor-header h2 {
+    font-size: 16px;
+  }
+
+  .video-editor-next {
+    font-size: 15px;
+  }
+
+  .video-editor-body {
+    display: flex;
+
+    flex-direction: column;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background: #111;
+  }
+
+  /* ==============================
+     VIDEO
+  ============================== */
+
+  .video-editor-preview {
+    width: 100%;
+
+    height: 55vh;
+
+    min-height: 330px;
+
+    flex-shrink: 0;
+  }
+
+  .video-editor-main-video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+  }
+
+  /* ==============================
+     CONTROLS
+  ============================== */
+
+  .video-editor-controls {
+    width: 100%;
+
+    padding: 20px 14px 35px;
+
+    overflow: visible;
+
+    flex-shrink: 0;
+  }
+
+  .video-editor-section {
+    margin-bottom: 25px;
+  }
+
+  .video-section-title-row {
+    align-items: center;
+  }
+
+  .select-cover-computer {
+    font-size: 13px;
+  }
+
+  /* ==============================
+     COVER
+  ============================== */
+
+  .cover-frame-strip {
+    height: 90px;
+  }
+
+  .cover-frame {
+    height: 90px;
+  }
+
+  /* ==============================
+     TRIM
+  ============================== */
+
+  .trim-preview-strip {
+    height: 65px;
+  }
+
+  .trim-preview-strip img {
+    height: 65px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .video-editor-preview {
+    height: 48vh;
+
+    min-height: 280px;
+  }
+
+  .video-editor-controls {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .video-section-title-row h3,
+  .video-editor-section h3 {
+    font-size: 15px;
+  }
+
+  .select-cover-computer {
+    font-size: 12px;
+  }
+
+  .cover-frame-strip {
+    height: 76px;
+  }
+
+  .cover-frame {
+    height: 76px;
+  }
+
+}
+
+
+
+
+/* =========================================================
+   MOBILE CREATE POST BACK ARROW
+========================================================= */
+
+/* Hide on desktop */
+
+.mobile-post-back {
+  display: none;
+}
+
+
+/* Mobile only */
+
+@media (max-width: 768px) {
+
+  .student-post-header {
+    position: relative;
+  }
+
+
+  .mobile-post-back {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+  }
+
+
+  .mobile-post-back:active {
+    transform: scale(0.92);
+  }
+
+
+  .student-post-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+  }
+
+
+  .student-post-header-content {
+    flex: 1;
+
+    min-width: 0;
+  }
+
+}

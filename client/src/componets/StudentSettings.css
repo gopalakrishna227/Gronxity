@@ -1,228 +1,428 @@
+/* =========================================================
+   LAPTOP / DESKTOP SETTINGS
+========================================================= */
+
 .student-settings-page {
   height: 100vh;
-  background: linear-gradient(180deg, #f8fbff 0%, #f3f7fc 100%);
+
+  background: linear-gradient(
+    180deg,
+    #f8fbff 0%,
+    #f3f7fc 100%
+  );
+
   padding: 24px;
-  overflow: hidden; /* whole page should not scroll */
+
+  overflow: hidden;
+
   box-sizing: border-box;
 }
 
+
+/* =========================================================
+   DESKTOP LAYOUT
+========================================================= */
+
 .student-settings-layout {
   max-width: 1380px;
+
   margin: 0 auto;
+
   display: grid;
+
   grid-template-columns: 320px 1fr;
+
   gap: 24px;
+
   height: 100%;
 }
+
+
+/* =========================================================
+   DESKTOP SIDEBAR
+========================================================= */
 
 .student-settings-sidebar {
   background: #ffffff;
+
   border: 1px solid #e8eef6;
+
   border-radius: 28px;
+
   padding: 22px 18px;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.08);
+
   height: 100%;
+
   position: sticky;
+
   top: 0;
 
   display: flex;
+
   flex-direction: column;
+
   overflow: hidden;
 }
 
+
+/* =========================================================
+   SIDEBAR TOP
+========================================================= */
 
 .student-settings-sidebar-top {
   margin-bottom: 20px;
 }
 
+
+/* =========================================================
+   LOGO
+========================================================= */
+
 .student-settings-logo-wrap {
   display: flex;
+
   align-items: center;
+
   gap: 14px;
+
   padding-bottom: 18px;
+
   border-bottom: 1px solid #eef2f7;
 }
+
 
 .student-settings-logo-icon {
   width: 48px;
   height: 48px;
+
   border-radius: 16px;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+  );
+
   color: #fff;
+
   display: grid;
+
   place-items: center;
-  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.2);
+
+  box-shadow:
+    0 12px 24px rgba(37, 99, 235, 0.2);
 }
+
 
 .student-settings-logo-text {
   margin: 0;
+
   font-size: 21px;
+
   color: #0f172a;
 }
 
+
 .student-settings-tagline {
   margin: 4px 0 0;
+
   font-size: 13px;
+
   color: #64748b;
 }
 
+
+/* =========================================================
+   DESKTOP MENU
+========================================================= */
+
 .student-settings-menu {
   flex: 1;
+
   display: flex;
+
   flex-direction: column;
+
   gap: 8px;
 
   overflow-y: auto;
+
   overflow-x: hidden;
 
   padding-right: 6px;
 }
 
 
+/* =========================================================
+   DESKTOP MENU ITEM
+========================================================= */
 
 .student-settings-sidebar-item {
   display: flex;
+
   align-items: center;
+
   gap: 12px;
+
   padding: 14px 14px;
+
   border-radius: 16px;
+
   cursor: pointer;
+
   color: #1e293b;
+
   font-size: 15px;
+
   font-weight: 600;
+
   transition: all 0.25s ease;
 }
 
+
 .student-settings-sidebar-item:hover {
   background: #f3f7fd;
+
   transform: translateX(3px);
 }
 
+
 .student-settings-sidebar-item.active {
-  background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+  background: linear-gradient(
+    135deg,
+    #eff6ff,
+    #f5f3ff
+  );
+
   color: #1d4ed8;
-  box-shadow: inset 0 0 0 1px #dbeafe;
+
+  box-shadow:
+    inset 0 0 0 1px #dbeafe;
 }
+
+
+/* =========================================================
+   DESKTOP CONTENT
+========================================================= */
 
 .student-settings-content {
   background: #ffffff;
+
   border: 1px solid #e8eef6;
+
   border-radius: 28px;
+
   padding: 30px;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.08);
+
   height: 100%;
-  overflow-y: auto;   /* only right side scroll */
+
+  overflow-y: auto;
+
   overflow-x: hidden;
+
   scroll-behavior: smooth;
 }
 
-/* optional nice scrollbar */
+
+/* =========================================================
+   DESKTOP CONTENT SCROLLBAR
+========================================================= */
+
 .student-settings-content::-webkit-scrollbar {
   width: 8px;
 }
 
+
 .student-settings-content::-webkit-scrollbar-thumb {
   background: #cbd5e1;
+
   border-radius: 20px;
 }
+
 
 .student-settings-content::-webkit-scrollbar-track {
   background: transparent;
 }
 
+
+/* =========================================================
+   SETTINGS PAGE BOX
+========================================================= */
+
 .settings-page-box h2 {
   margin: 0 0 10px;
+
   font-size: 28px;
+
   color: #0f172a;
 }
+
 
 .settings-page-desc {
   margin: 0 0 24px;
+
   color: #64748b;
+
   line-height: 1.7;
+
   font-size: 15px;
 }
+
+
+/* =========================================================
+   SETTINGS CARD GRID
+========================================================= */
 
 .settings-card-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
   gap: 18px;
 }
 
+
+/* =========================================================
+   SETTINGS CARD
+========================================================= */
+
 .settings-card {
   background: #ffffff;
+
   border: 1px solid #edf2f7;
+
   border-radius: 22px;
+
   padding: 22px;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.05);
 }
+
 
 .settings-card h4 {
   margin: 0 0 10px;
+
   color: #0f172a;
+
   font-size: 17px;
 }
 
+
 .settings-card p {
   margin: 0;
+
   color: #64748b;
+
   line-height: 1.7;
+
   font-size: 14px;
 }
 
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
 .logout-main-btn {
   margin-top: 8px;
+
   border: none;
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+
+  background: linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+
   color: #fff;
+
   padding: 12px 22px;
+
   border-radius: 14px;
+
   font-size: 15px;
+
   font-weight: 700;
+
   cursor: pointer;
+
   transition: all 0.25s ease;
 }
 
+
 .logout-main-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 22px rgba(220, 38, 38, 0.22);
+
+  box-shadow:
+    0 12px 22px rgba(220, 38, 38, 0.22);
 }
 
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
 @media (max-width: 1100px) {
+
   .student-settings-page {
     height: auto;
+
     overflow: visible;
   }
 
+
   .student-settings-layout {
     grid-template-columns: 1fr;
+
     height: auto;
   }
+
 
   .student-settings-sidebar,
   .student-settings-content {
     height: auto;
+
     overflow: visible;
+
     position: static;
   }
+
 
   .settings-card-grid {
     grid-template-columns: 1fr;
   }
 }
 
+
+/* =========================================================
+   SMALL SCREEN - OLD DESKTOP CLASSES
+   Kept so existing desktop/tablet behavior is preserved
+========================================================= */
+
 @media (max-width: 640px) {
+
   .student-settings-page {
     padding: 14px;
   }
+
 
   .student-settings-content {
     padding: 20px;
   }
 
+
   .settings-page-box h2 {
     font-size: 22px;
   }
+
 
   .student-settings-sidebar-item {
     font-size: 14px;
@@ -230,4 +430,1515 @@
 }
 
 
+/* =========================================================
+   =========================================================
+   MOBILE VERSION
+   COMPLETELY SEPARATE FROM DESKTOP
+   SCREEN <= 768px
+   =========================================================
+========================================================= */
 
+/* =========================================================
+   LAPTOP / DESKTOP SETTINGS
+========================================================= */
+
+.student-settings-page {
+  height: 100vh;
+
+  background: linear-gradient(
+    180deg,
+    #f8fbff 0%,
+    #f3f7fc 100%
+  );
+
+  padding: 24px;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   DESKTOP LAYOUT
+========================================================= */
+
+.student-settings-layout {
+  max-width: 1380px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 320px 1fr;
+
+  gap: 24px;
+
+  height: 100%;
+}
+
+
+/* =========================================================
+   DESKTOP SIDEBAR
+========================================================= */
+
+.student-settings-sidebar {
+  background: #ffffff;
+
+  border: 1px solid #e8eef6;
+
+  border-radius: 28px;
+
+  padding: 22px 18px;
+
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.08);
+
+  height: 100%;
+
+  position: sticky;
+
+  top: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   SIDEBAR TOP
+========================================================= */
+
+.student-settings-sidebar-top {
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.student-settings-logo-wrap {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #eef2f7;
+}
+
+
+.student-settings-logo-icon {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 16px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+  );
+
+  color: #fff;
+
+  display: grid;
+
+  place-items: center;
+
+  box-shadow:
+    0 12px 24px rgba(37, 99, 235, 0.2);
+}
+
+
+.student-settings-logo-text {
+  margin: 0;
+
+  font-size: 21px;
+
+  color: #0f172a;
+}
+
+
+.student-settings-tagline {
+  margin: 4px 0 0;
+
+  font-size: 13px;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   DESKTOP MENU
+========================================================= */
+
+.student-settings-menu {
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+  padding-right: 6px;
+}
+
+
+/* =========================================================
+   DESKTOP MENU ITEM
+========================================================= */
+
+.student-settings-sidebar-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 14px;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  color: #1e293b;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  transition: all 0.25s ease;
+}
+
+
+.student-settings-sidebar-item:hover {
+  background: #f3f7fd;
+
+  transform: translateX(3px);
+}
+
+
+.student-settings-sidebar-item.active {
+  background: linear-gradient(
+    135deg,
+    #eff6ff,
+    #f5f3ff
+  );
+
+  color: #1d4ed8;
+
+  box-shadow:
+    inset 0 0 0 1px #dbeafe;
+}
+
+
+/* =========================================================
+   DESKTOP CONTENT
+========================================================= */
+
+.student-settings-content {
+  background: #ffffff;
+
+  border: 1px solid #e8eef6;
+
+  border-radius: 28px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.08);
+
+  height: 100%;
+
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
+}
+
+
+/* =========================================================
+   DESKTOP CONTENT SCROLLBAR
+========================================================= */
+
+.student-settings-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+.student-settings-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+
+  border-radius: 20px;
+}
+
+
+.student-settings-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* =========================================================
+   SETTINGS PAGE BOX
+========================================================= */
+
+.settings-page-box h2 {
+  margin: 0 0 10px;
+
+  font-size: 28px;
+
+  color: #0f172a;
+}
+
+
+.settings-page-desc {
+  margin: 0 0 24px;
+
+  color: #64748b;
+
+  line-height: 1.7;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   SETTINGS CARD GRID
+========================================================= */
+
+.settings-card-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   SETTINGS CARD
+========================================================= */
+
+.settings-card {
+  background: #ffffff;
+
+  border: 1px solid #edf2f7;
+
+  border-radius: 22px;
+
+  padding: 22px;
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.05);
+}
+
+
+.settings-card h4 {
+  margin: 0 0 10px;
+
+  color: #0f172a;
+
+  font-size: 17px;
+}
+
+
+.settings-card p {
+  margin: 0;
+
+  color: #64748b;
+
+  line-height: 1.7;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.logout-main-btn {
+  margin-top: 8px;
+
+  border: none;
+
+  background: linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+
+  color: #fff;
+
+  padding: 12px 22px;
+
+  border-radius: 14px;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+
+.logout-main-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 22px rgba(220, 38, 38, 0.22);
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .student-settings-page {
+    height: auto;
+
+    overflow: visible;
+  }
+
+
+  .student-settings-layout {
+    grid-template-columns: 1fr;
+
+    height: auto;
+  }
+
+
+  .student-settings-sidebar,
+  .student-settings-content {
+    height: auto;
+
+    overflow: visible;
+
+    position: static;
+  }
+
+
+  .settings-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   SMALL SCREEN - OLD DESKTOP CLASSES
+   Kept so existing desktop/tablet behavior is preserved
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .student-settings-page {
+    padding: 14px;
+  }
+
+
+  .student-settings-content {
+    padding: 20px;
+  }
+
+
+  .settings-page-box h2 {
+    font-size: 22px;
+  }
+
+
+  .student-settings-sidebar-item {
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   =========================================================
+   MOBILE VERSION
+   COMPLETELY SEPARATE FROM DESKTOP
+   SCREEN <= 768px
+   =========================================================
+========================================================= */
+/* =========================================================
+   MOBILE STUDENT SETTINGS
+   COMPLETELY INDEPENDENT FROM DESKTOP
+   SCREEN <= 768px
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* =======================================================
+     MOBILE PAGE
+  ======================================================= */
+
+  .student-settings-mobile-page {
+    width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #ffffff;
+
+    overflow: hidden !important;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =======================================================
+     ACTUAL MOBILE SCROLL CONTAINER
+  ======================================================= */
+
+  .student-settings-mobile-scroll {
+  width: 100% !important;
+  height: calc(100vh - 10px) !important;
+  max-height: calc(100vh - 10px) !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+
+  box-sizing: border-box;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+
+  /* =======================================================
+     SCROLLBAR
+  ======================================================= */
+
+  .student-settings-mobile-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .student-settings-mobile-scroll::-webkit-scrollbar-track {
+    background: #f5f5f5;
+  }
+
+  .student-settings-mobile-scroll::-webkit-scrollbar-thumb {
+    background: #b8c1cc;
+    border-radius: 20px;
+  }
+
+
+  /* =======================================================
+     MOBILE LIST
+  ======================================================= */
+
+  .student-settings-mobile-list {
+    width: 100% !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #ffffff;
+
+    overflow: visible !important;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =======================================================
+     HEADER
+  ======================================================= */
+
+  .student-settings-mobile-header {
+    width: 100%;
+
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    margin: 0;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #eef1f4;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =======================================================
+     HEADER ICON
+  ======================================================= */
+
+  .student-settings-mobile-header-icon {
+    width: 44px;
+    height: 44px;
+
+    min-width: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: linear-gradient(
+      135deg,
+      #2563eb,
+      #7c3aed
+    );
+
+    color: #ffffff;
+
+    box-shadow:
+      0 8px 18px rgba(37, 99, 235, 0.18);
+
+    box-sizing: border-box;
+  }
+
+  .student-settings-mobile-header-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  /* =======================================================
+     TITLE
+  ======================================================= */
+
+  .student-settings-mobile-title {
+    margin: 0;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    color: #0f172a;
+  }
+
+
+  /* =======================================================
+     SUBTITLE
+  ======================================================= */
+
+  .student-settings-mobile-subtitle {
+    margin: 3px 0 0;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    color: #64748b;
+  }
+
+
+  /* =======================================================
+     MOBILE MENU
+  ======================================================= */
+
+  .student-settings-mobile-menu {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 0;
+
+    margin: 0;
+    padding: 0;
+
+    background: #ffffff;
+
+    overflow: visible !important;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =======================================================
+     MOBILE ITEM
+  ======================================================= */
+
+  .student-settings-mobile-item {
+    width: 100%;
+
+    height: 64px;
+    min-height: 64px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 16px;
+
+    margin: 0;
+
+    background: #ffffff;
+
+    border: none;
+    border-bottom: 1px solid #eef1f4;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    transition:
+      background 0.2s ease,
+      transform 0.15s ease;
+  }
+
+
+  /* =======================================================
+     LAST ITEM - LOGOUT
+     ONLY SMALL SPACE AFTER LOGOUT
+  ======================================================= */
+
+  .student-settings-mobile-item:last-child {
+    margin-bottom: 50px !important;
+  }
+
+
+  /* =======================================================
+     ITEM LEFT
+  ======================================================= */
+
+  .student-settings-mobile-item-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 0;
+
+    flex: 1;
+  }
+
+
+  /* =======================================================
+     ITEM ICON
+  ======================================================= */
+
+  .student-settings-mobile-item-icon {
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f5f7fb;
+
+    color: #334155;
+
+    box-sizing: border-box;
+  }
+
+  .student-settings-mobile-item-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  /* =======================================================
+     ITEM TEXT
+  ======================================================= */
+
+  .student-settings-mobile-item-left span {
+    color: #1e293b;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+
+  /* =======================================================
+     RIGHT ARROW
+  ======================================================= */
+
+  .student-settings-mobile-arrow {
+    flex-shrink: 0;
+
+    margin-left: 12px;
+
+    color: #94a3b8;
+
+    font-size: 28px;
+
+    font-weight: 300;
+
+    line-height: 1;
+  }
+
+
+  /* =======================================================
+     HOVER
+  ======================================================= */
+
+  .student-settings-mobile-item:hover {
+    background: #f8fafc;
+  }
+
+
+  /* =======================================================
+     PRESS
+  ======================================================= */
+
+  .student-settings-mobile-item:active {
+    background: #f1f5f9;
+
+    transform: scale(0.995);
+  }
+
+
+  /* =======================================================
+     INDIVIDUAL SETTING PAGE
+  ======================================================= */
+
+  .student-settings-mobile-detail {
+    width: 100% !important;
+
+    min-width: 0;
+
+    min-height: 0 !important;
+
+    height: auto !important;
+
+    margin: 0;
+    padding: 0;
+
+    background: #ffffff;
+
+    overflow: visible !important;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =======================================================
+     DETAIL HEADER
+  ======================================================= */
+
+  .student-settings-mobile-detail-header {
+    width: 100%;
+
+    height: 58px;
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 14px;
+
+    margin: 0;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #eef1f4;
+
+    box-sizing: border-box;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+  }
+
+
+  /* =======================================================
+     BACK BUTTON
+  ======================================================= */
+
+  .student-settings-mobile-back-btn {
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #111827;
+
+    font-size: 28px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+  }
+
+  .student-settings-mobile-back-btn:hover {
+    background: #f3f4f6;
+  }
+
+  .student-settings-mobile-back-btn:active {
+    transform: scale(0.92);
+  }
+
+
+  /* =======================================================
+     DETAIL TITLE
+  ======================================================= */
+
+  .student-settings-mobile-detail-header h2 {
+    margin: 0;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #111827;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+
+  /* =======================================================
+     DETAIL CONTENT
+  ======================================================= */
+
+  .student-settings-mobile-detail-content {
+    width: 100% !important;
+
+    min-width: 0;
+
+    min-height: 0 !important;
+
+    height: auto !important;
+
+    margin: 0;
+
+    padding: 20px 16px 50px !important;
+
+    background: #ffffff;
+
+    box-sizing: border-box;
+
+    overflow: visible !important;
+  }
+
+
+  /* =======================================================
+     SETTINGS PAGE BOX
+  ======================================================= */
+
+  .student-settings-mobile-detail-content .settings-page-box {
+    width: 100%;
+
+    height: auto;
+
+    min-height: 0;
+
+    overflow: visible;
+  }
+
+
+  .student-settings-mobile-detail-content
+  .settings-page-box h2 {
+    margin: 0 0 10px;
+
+    font-size: 22px;
+
+    line-height: 1.3;
+
+    color: #0f172a;
+  }
+
+
+  .student-settings-mobile-detail-content
+  .settings-page-desc {
+    margin: 0 0 20px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: #64748b;
+  }
+
+
+  /* =======================================================
+     CARDS
+  ======================================================= */
+
+  .student-settings-mobile-detail-content
+  .settings-card-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    height: auto;
+
+    min-height: 0;
+
+    overflow: visible;
+  }
+
+
+  .student-settings-mobile-detail-content
+  .settings-card {
+    width: 100%;
+
+    height: auto;
+
+    min-height: 0;
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    box-sizing: border-box;
+
+    overflow: visible;
+  }
+
+
+  .student-settings-mobile-detail-content
+  .settings-card h4 {
+    margin: 0 0 8px;
+
+    font-size: 16px;
+
+    color: #0f172a;
+  }
+
+
+  .student-settings-mobile-detail-content
+  .settings-card p {
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: #64748b;
+  }
+
+
+  /* =======================================================
+     MOBILE LOGOUT BUTTON
+  ======================================================= */
+
+  .student-settings-mobile-detail-content
+  .logout-main-btn {
+    width: 100%;
+
+    min-height: 46px;
+
+    margin-top: 8px;
+
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    box-sizing: border-box;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   <= 480px
+========================================================= */
+
+@media screen and (max-width: 480px) {
+
+  .student-settings-mobile-header {
+    padding: 15px 14px;
+  }
+
+
+  .student-settings-mobile-header-icon {
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+
+    border-radius: 11px;
+  }
+
+
+  .student-settings-mobile-title {
+    font-size: 19px;
+  }
+
+
+  .student-settings-mobile-item {
+    height: 60px;
+    min-height: 60px;
+
+    padding: 10px 14px;
+  }
+
+
+  .student-settings-mobile-item:last-child {
+    margin-bottom: 14px !important;
+  }
+
+
+  .student-settings-mobile-item-icon {
+    width: 38px;
+    height: 38px;
+
+    min-width: 38px;
+
+    border-radius: 11px;
+  }
+
+
+  .student-settings-mobile-item-left {
+    gap: 12px;
+  }
+
+
+  .student-settings-mobile-item-left span {
+    font-size: 14px;
+  }
+
+
+  .student-settings-mobile-detail-content {
+    padding: 18px 14px 50px !important;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   <= 480px
+========================================================= */
+
+@media screen and (max-width: 480px) {
+
+  .student-settings-mobile-header {
+    height: 78px;
+    min-height: 78px;
+
+    padding: 15px 14px;
+  }
+
+
+  .student-settings-mobile-header-icon {
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+
+    border-radius: 11px;
+  }
+
+
+  .student-settings-mobile-title {
+    font-size: 19px;
+  }
+
+
+  .student-settings-mobile-item {
+    height: 62px;
+    min-height: 62px;
+
+    padding: 11px 14px;
+  }
+
+
+  .student-settings-mobile-item-icon {
+    width: 38px;
+    height: 38px;
+
+    min-width: 38px;
+
+    border-radius: 11px;
+  }
+
+
+  .student-settings-mobile-item-left {
+    gap: 12px;
+  }
+
+
+  .student-settings-mobile-item-left span {
+    font-size: 14px;
+  }
+
+
+  .student-settings-mobile-detail-content {
+    padding: 18px 14px 20px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   <= 480px
+========================================================= */
+
+@media screen and (max-width: 480px) {
+
+  /* =======================================================
+     SMALL MOBILE PAGE
+  ======================================================= */
+
+  .student-settings-mobile-page {
+    height: 100dvh !important;
+
+    min-height: 100dvh !important;
+  }
+
+
+  .student-settings-mobile-scroll {
+    height: 100% !important;
+
+    padding-bottom: 50px !important;
+  }
+
+
+  /* =======================================================
+     SMALL MOBILE HEADER
+  ======================================================= */
+
+  .student-settings-mobile-header {
+    height: 76px !important;
+
+    min-height: 76px !important;
+
+    max-height: 76px !important;
+
+    flex-basis: 76px !important;
+
+    padding: 15px 14px !important;
+
+    gap: 12px;
+  }
+
+
+  .student-settings-mobile-header-icon {
+    width: 40px;
+
+    height: 40px;
+
+    min-width: 40px;
+
+    max-width: 40px;
+
+    min-height: 40px;
+
+    max-height: 40px;
+
+    flex-basis: 40px;
+  }
+
+
+  .student-settings-mobile-header-icon svg {
+    width: 20px;
+
+    height: 20px;
+  }
+
+
+  .student-settings-mobile-title {
+    font-size: 19px;
+
+    line-height: 1.3;
+  }
+
+
+  .student-settings-mobile-subtitle {
+    font-size: 11px;
+
+    margin-top: 2px !important;
+  }
+
+
+  /* =======================================================
+     SMALL MOBILE MENU ITEM
+  ======================================================= */
+
+  .student-settings-mobile-item {
+    height: 62px !important;
+
+    min-height: 62px !important;
+
+    max-height: 62px !important;
+
+    flex: 0 0 62px !important;
+
+    padding: 11px 14px !important;
+  }
+
+
+  .student-settings-mobile-item-left {
+    gap: 12px;
+  }
+
+
+  .student-settings-mobile-item-icon {
+    width: 38px;
+
+    height: 38px;
+
+    min-width: 38px;
+
+    max-width: 38px;
+
+    min-height: 38px;
+
+    max-height: 38px;
+
+    flex-basis: 38px;
+  }
+
+
+  .student-settings-mobile-item-icon svg {
+    width: 19px;
+
+    height: 19px;
+  }
+
+
+  .student-settings-mobile-item-left span {
+    font-size: 14px;
+
+    line-height: 1.35;
+  }
+
+
+  .student-settings-mobile-arrow {
+    width: 22px;
+
+    min-width: 22px;
+
+    max-width: 22px;
+
+    margin-left: 8px;
+
+    font-size: 26px;
+  }
+
+
+  /* =======================================================
+     SMALL DETAIL HEADER
+  ======================================================= */
+
+  .student-settings-mobile-detail-header {
+    height: 56px !important;
+
+    min-height: 56px !important;
+
+    max-height: 56px !important;
+
+    flex-basis: 56px !important;
+
+    padding: 0 12px !important;
+  }
+
+
+  .student-settings-mobile-back-btn {
+    width: 38px;
+
+    height: 38px;
+
+    min-width: 38px;
+
+    max-width: 38px;
+
+    min-height: 38px;
+
+    max-height: 38px;
+
+    flex-basis: 38px;
+
+    font-size: 26px;
+  }
+
+
+  .student-settings-mobile-detail-header h2 {
+    font-size: 17px;
+
+    max-width: calc(100% - 48px);
+  }
+
+
+  /* =======================================================
+     SMALL DETAIL CONTENT
+  ======================================================= */
+
+  .student-settings-mobile-detail-content,
+  .student-settings-mobile-detail-scroll {
+    padding: 16px 14px 50px !important;
+  }
+
+
+  .student-settings-mobile-detail-content
+  .settings-card,
+
+  .student-settings-mobile-detail-scroll
+  .settings-card {
+    padding: 16px;
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICES
+   <= 360px
+========================================================= */
+
+@media screen and (max-width: 360px) {
+
+  .student-settings-mobile-header {
+    padding-left: 12px !important;
+
+    padding-right: 12px !important;
+  }
+
+
+  .student-settings-mobile-item {
+    padding-left: 12px !important;
+
+    padding-right: 12px !important;
+  }
+
+
+  .student-settings-mobile-item-left {
+    gap: 10px;
+  }
+
+
+  .student-settings-mobile-item-left span {
+    font-size: 13px;
+  }
+
+
+  .student-settings-mobile-item-icon {
+    width: 36px;
+
+    height: 36px;
+
+    min-width: 36px;
+
+    max-width: 36px;
+
+    min-height: 36px;
+
+    max-height: 36px;
+
+    flex-basis: 36px;
+  }
+
+
+  .student-settings-mobile-arrow {
+    margin-left: 5px;
+  }
+}

@@ -1096,3 +1096,835 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+
+
+
+/* =========================================================
+   MOBILE INSTAGRAM STYLE REELS
+   ========================================================= */
+
+.mobile-reel-search {
+  display: none;
+}
+
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  /* Main page */
+  .reels-page-wrapper {
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  /* Instagram style search */
+  .mobile-reel-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    position: relative;
+    z-index: 50;
+
+    width: calc(100% - 24px);
+    height: 42px;
+
+    margin: 8px auto;
+
+    padding: 0 14px;
+
+    box-sizing: border-box;
+
+    background: #f1f1f1;
+
+    border-radius: 22px;
+
+    color: #666;
+  }
+
+  .mobile-reel-search svg {
+    flex-shrink: 0;
+    color: #777;
+  }
+
+  .mobile-reel-search input {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-size: 14px;
+    color: #111;
+  }
+
+  .mobile-reel-search input::placeholder {
+    color: #888;
+  }
+
+
+  /* Reel scrolling area */
+  .reels-feed-page {
+    width: 100%;
+    height: calc(100vh - 58px);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scroll-snap-type: y mandatory;
+
+    background: #000;
+
+    padding: 0;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .reels-feed-page::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* Each reel */
+  .reel-stage {
+    width: 100%;
+    height: calc(100vh - 58px);
+    min-height: calc(100vh - 58px);
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+
+  /* Full mobile screen reel */
+  .reel-phone-frame {
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+    max-height: none;
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    background: #000;
+  }
+
+  .reel-video-wrapper {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 0;
+  }
+
+  .reel-full-video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+
+  /* Top icons */
+  .reel-top-bar {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .sound-toggle-btn,
+  .reel-top-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  /* Right Instagram action column */
+  .reel-right-actions {
+    position: absolute;
+
+    right: 10px;
+    bottom: 105px;
+
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 18px;
+  }
+
+  .reel-side-action {
+    width: 42px;
+
+    border: none;
+    background: transparent;
+
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    color: #fff;
+  }
+
+  .reel-side-action svg {
+    width: 28px;
+    height: 28px;
+
+    padding: 0;
+
+    background: transparent;
+
+    color: #fff;
+
+    filter: drop-shadow(
+      0 1px 4px rgba(0, 0, 0, 0.7)
+    );
+  }
+
+  .reel-side-action span {
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #fff;
+
+    text-shadow:
+      0 1px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Like */
+  .reel-side-action.active svg {
+    color: #ff3040;
+    fill: #ff3040;
+  }
+
+
+  /* Save */
+  .reel-save-btn.saved svg,
+  .reel-side-action.saved svg {
+    color: #fff;
+    fill: #fff;
+  }
+
+
+  /* Bottom profile information */
+  .reel-bottom-overlay {
+    position: absolute;
+
+    left: 0;
+    right: 60px;
+
+    bottom: 18px;
+
+    z-index: 15;
+
+    padding: 0 12px;
+  }
+
+  .reel-bottom-top-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  .reel-profile-click {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 0;
+
+    flex: 1;
+  }
+
+  .reel-user-avatar {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border: 2px solid #fff;
+  }
+
+  .reel-middle-meta {
+    min-width: 0;
+  }
+
+  .reel-middle-meta h4 {
+    font-size: 14px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+  .reel-tag-row {
+    margin-top: 3px;
+  }
+
+  .reel-tag-text {
+    max-width: 180px;
+
+    display: block;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    font-size: 12px;
+  }
+
+  .reel-tag-text p {
+    margin: 0;
+  }
+
+
+  /* Follow button */
+  .reel-follow-btn {
+    flex-shrink: 0;
+
+    padding: 6px 13px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.85);
+
+    color: #fff;
+  }
+
+
+  /* Dropdown */
+  .reel-top-dropdown {
+    top: 44px;
+    right: 0;
+
+    min-width: 120px;
+
+    border-radius: 10px;
+  }
+
+
+  /* Comments popup */
+  .commentBox {
+    width: 100%;
+    max-width: none;
+
+    height: 82vh;
+
+    border-radius: 20px 20px 0 0;
+  }
+
+
+  /* Share popup */
+  .sharePopupOverlay {
+    padding: 0;
+
+    align-items: flex-end;
+  }
+
+  .sharePopupBox {
+    width: 100%;
+
+    max-width: none;
+
+    max-height: 85vh;
+
+    border-radius: 22px 22px 0 0;
+  }
+
+  .sharePopupHeader h3 {
+    font-size: 20px;
+  }
+
+  .shareUsersGrid {
+    grid-template-columns: repeat(4, 1fr);
+
+    max-height: 260px;
+
+    gap: 12px 8px;
+  }
+
+  .shareUserCard img {
+    width: 58px;
+    height: 58px;
+  }
+
+  .shareBottomBar {
+    gap: 14px;
+
+    padding-bottom: 22px;
+  }
+}
+
+
+
+/* =========================================================
+   INSTAGRAM STYLE REELS GRID
+   ========================================================= */
+
+.reels-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+
+/* ================= GRID PAGE ================= */
+
+.reels-grid-page {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: #fff;
+}
+
+/* Each reel box */
+.reel-grid-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 14;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  background: #111;
+  cursor: pointer;
+}
+
+/* Video / image */
+.reel-grid-media {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Play icon */
+.reel-grid-icon {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+
+  pointer-events: none;
+}
+
+.reel-grid-icon span {
+  font-size: 12px;
+  margin-left: 2px;
+}
+
+/* No media */
+.reel-grid-no-media {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #222;
+  color: #fff;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   FULL SCREEN REEL VIEWER
+   ========================================================= */
+
+.reel-viewer-page {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  background: #000;
+
+  z-index: 9999;
+}
+
+
+/* Close button */
+.reel-viewer-close {
+  position: fixed;
+
+  top: 18px;
+  left: 18px;
+
+  z-index: 10000;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* Feed inside viewer */
+.reel-viewer-page .reels-feed-page {
+  width: 100%;
+  height: 100vh;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scroll-snap-type: y mandatory;
+
+  background: #000;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* Hide scrollbar */
+.reel-viewer-page .reels-feed-page::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Individual reel */
+.reel-viewer-page .reel-stage {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+
+/* Reel video container */
+.reel-viewer-page .reel-phone-frame {
+  width: 100%;
+  height: 100vh;
+
+  max-width: 430px;
+  max-height: 100vh;
+
+  border-radius: 0;
+
+  background: #000;
+
+  box-shadow: none;
+}
+
+
+/* Video */
+.reel-viewer-page .reel-full-video {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  background: #000;
+}
+
+
+/* =========================================================
+   DESKTOP GRID
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+
+
+.reels-grid-page {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+  }
+
+  .reel-grid-item {
+    aspect-ratio: 9 / 14;
+  }
+
+
+
+  }
+
+
+
+
+
+/* =========================================================
+   MOBILE GRID
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .reels-page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+
+    background: #fff;
+
+    overflow-x: hidden;
+  }
+
+  .reels-grid-page {
+    width: 100%;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 2px;
+
+    background: #fff;
+  }
+
+  .reel-grid-item {
+    width: 100%;
+
+    aspect-ratio: 9 / 14;
+
+    border-radius: 0;
+
+    overflow: hidden;
+  }
+
+  .reel-grid-media {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  .reel-grid-icon {
+    width: 25px;
+    height: 25px;
+
+    right: 6px;
+    bottom: 6px;
+  }
+
+  .reel-grid-icon span {
+    font-size: 10px;
+  }
+
+
+  /* Full screen viewer */
+
+  .reel-viewer-page {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100dvh;
+
+    background: #000;
+  }
+
+  .reel-viewer-page .reels-feed-page {
+    width: 100%;
+    height: 100dvh;
+
+    overflow-y: auto;
+
+    scroll-snap-type: y mandatory;
+
+    background: #000;
+  }
+
+  .reel-viewer-page .reel-stage {
+    width: 100%;
+
+    height: 100dvh;
+    min-height: 100dvh;
+
+    padding: 0;
+  }
+
+  .reel-viewer-page .reel-phone-frame {
+    width: 100%;
+    height: 100dvh;
+
+    max-width: none;
+    max-height: none;
+
+    border-radius: 0;
+
+    box-shadow: none;
+  }
+
+  .reel-viewer-page .reel-video-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .reel-viewer-page .reel-full-video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  .reel-viewer-close {
+    top: 12px;
+    left: 12px;
+
+    width: 38px;
+    height: 38px;
+  }
+}
+
+
+
+
+
+/* =========================================
+   MOBILE STUDENT SEARCH
+========================================= */
+
+.mobile-student-search-bar {
+  display: none;
+}
+
+.mobile-student-search-container {
+  display: none;
+}
+
+@media (max-width: 820px) {
+
+  .mobile-student-search-bar {
+    display: flex;
+
+    align-items: center;
+    gap: 10px;
+
+    width: calc(100% - 24px);
+    height: 42px;
+
+    margin: 10px 12px;
+
+    padding: 0 14px;
+
+    box-sizing: border-box;
+
+    background: #f1f1f1;
+    border-radius: 22px;
+
+    color: #777;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    position: relative;
+    z-index: 100;
+  }
+
+  .mobile-student-search-container {
+    display: block;
+
+    width: 100%;
+    min-height: 100vh;
+
+    background: #fff;
+
+    position: relative;
+    z-index: 200;
+  }
+
+  .mobile-student-search-header {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+
+    padding: 0 10px;
+
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #eee;
+  }
+
+  .mobile-student-search-header h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .mobile-student-search-back {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    margin-right: 4px;
+  }
+}

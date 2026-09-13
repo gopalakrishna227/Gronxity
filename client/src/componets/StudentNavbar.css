@@ -1,92 +1,200 @@
-/* =========================
+/* =========================================================
    STUDENT NAVBAR
-========================= */
+   CLEAN / NON-DUPLICATE CSS
+   DESKTOP + TABLET + MOBILE
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN NAVBAR
+========================================================= */
 
 .navbar {
   position: sticky;
+
   top: 0;
+
   width: 100%;
-  height: 68px;
+
+  min-height: 68px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
+  gap: 0;
+
   padding: 0 40px;
+
   background: #ffffff;
+
   border-bottom: 1px solid #e9ecef;
+
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
 
   z-index: 1000;
+
+  flex-shrink: 0;
 }
 
-/* =========================
-   LEFT (LOGO)
-========================= */
+
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo-container {
   flex: 0 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  position: relative;
 }
 
 .logo-name {
+  margin: 0;
+
   font-size: 32px;
+
   font-weight: 800;
+
   color: #2563eb;
+
   letter-spacing: 0.5px;
+
   cursor: pointer;
+
   user-select: none;
+
+  line-height: 1;
 }
 
-/* =========================
-   CENTER (SEARCH)
-========================= */
+
+/* =========================================================
+   MOBILE HEART
+   Hidden on desktop
+========================================================= */
+
+.mobile-heart-btn {
+  display: none;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
 
 .search-box {
   flex: 1;
-  max-width: 520px;
-  margin: 0 45px;
 
-  display: flex;
-  align-items: center;
+  width: 100%;
+
+  max-width: 520px;
+
+  min-width: 0;
 
   height: 46px;
+
+  margin: 0 45px;
+
+  padding: 0 18px;
+
+  display: flex;
+
+  align-items: center;
 
   background: #f5f7fb;
 
   border: 1px solid transparent;
+
   border-radius: 50px;
 
-  padding: 0 18px;
-
-  transition: .3s;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .search-box:hover {
-  background: #fff;
-  border-color: #2563eb;
+  background: #f5f7fb;
+  border-color: transparent;
 }
+
+
+
 
 .search-box:focus-within {
-  background: #fff;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+  background: #f5f7fb;
+  border-color: transparent;
+  box-shadow: none;
 }
 
+
+/* =========================================================
+   SEARCH ICON
+========================================================= */
+
 .search-icon {
+  flex: 0 0 auto;
+
+  width: 20px;
+  height: 20px;
+
   font-size: 20px;
+
   color: #64748b;
 }
+
+
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
 
 .search-input {
   flex: 1;
 
+  width: 100%;
+
+  min-width: 0;
+
+  height: 100%;
+
   margin-left: 12px;
 
+  padding: 0;
+
   border: none;
+
   outline: none;
+
   background: transparent;
 
   font-size: 15px;
+
   color: #111827;
 }
 
@@ -94,118 +202,832 @@
   color: #94a3b8;
 }
 
-/* =========================
-   RIGHT (BUTTONS)
-========================= */
+.search-input:focus {
+  outline: none;
+}
+
+
+/* =========================================================
+   NAVIGATION TABS
+========================================================= */
 
 .nav-links {
+  flex: 0 0 auto;
+
   display: flex;
+
   align-items: center;
+
+  justify-content: center;
+
   gap: 14px;
+
+  width: auto;
+
+  overflow: visible;
+
+  position: static;
+
+  background: transparent;
 }
+
+
+/* =========================================================
+   NAV BUTTONS
+========================================================= */
 
 .nav-links button {
   height: 42px;
 
+  min-width: 0;
+
   padding: 0 22px;
 
   border: none;
+
   border-radius: 25px;
 
   background: #f5f7fb;
+
   color: #374151;
 
   font-size: 14px;
+
   font-weight: 600;
 
   cursor: pointer;
 
-  transition: all .25s ease;
-}
+  white-space: nowrap;
 
-.nav-links button:hover {
-  background: #2563eb;
-  color: white;
-  transform: translateY(-2px);
-}
-
-.nav-links button:active {
-  transform: scale(.96);
-}
-
-/* Active Button */
-
-.nav-links button {
-  height: 42px;
-  padding: 0 22px;
-  border: none;
-  border-radius: 25px;
-  background: #f5f7fb;
-  color: #374151;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.15s ease;
 }
 
 .nav-links button:hover {
   background: #dbeafe;
+
   color: #2563eb;
 }
 
-.nav-links button.active {
+.nav-links button:active {
+  transform: scale(0.96);
+}
+
+
+/* =========================================================
+   ACTIVE TAB
+========================================================= */
+
+.nav-links button.activeTab {
   background: #2563eb;
-  color: #fff;
+
+  color: #ffffff;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+.nav-links button.activeTab:hover {
+  background: #2563eb;
 
-@media (max-width:1000px){
-
-.navbar{
-    padding:0 20px;
+  color: #ffffff;
 }
 
-.search-box{
-    max-width:350px;
-    margin:0 20px;
+
+/* =========================================================
+   FILTER DROPDOWN
+========================================================= */
+
+.filter-dropdown {
+  position: absolute;
+
+  top: 65px;
+
+  right: 40px;
+
+  width: 320px;
+
+  max-width: calc(100vw - 20px);
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.2);
+
+  z-index: 2000;
+
+  overflow-x: hidden;
+
+  overflow-y: auto;
 }
 
-.nav-links{
-    gap:8px;
+
+/* =========================================================
+   FILTER TITLE
+========================================================= */
+
+.filter-dropdown h3 {
+  margin: 0 0 15px;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #111827;
 }
 
-.nav-links button{
-    padding:0 15px;
+
+/* =========================================================
+   FILTER GRID
+========================================================= */
+
+.filter-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
 }
 
+
+/* =========================================================
+   FILTER LABEL
+========================================================= */
+
+.filter-grid label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 14px;
+
+  color: #374151;
+
+  cursor: pointer;
+
+  min-width: 0;
 }
 
-@media(max-width:768px){
+.filter-grid input {
+  flex-shrink: 0;
 
-.navbar{
-    flex-wrap:wrap;
-    height:auto;
-    padding:15px;
-    gap:15px;
+  cursor: pointer;
 }
 
-.logo-container{
-    width:100%;
+
+/* =========================================================
+   APPLY FILTER BUTTON
+========================================================= */
+
+.apply-filter-btn {
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 10px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  transition: background 0.2s ease;
 }
 
-.search-box{
-    width:100%;
-    max-width:100%;
-    margin:0;
+.apply-filter-btn:hover {
+  background: #1d4ed8;
 }
 
-.nav-links{
-    width:100%;
-    justify-content:center;
-    flex-wrap:wrap;
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (max-width: 1000px) {
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .logo-name {
+    font-size: 28px;
+  }
+
+  .search-box {
+    max-width: 350px;
+
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links button {
+    padding: 0 15px;
+
+    font-size: 13px;
+  }
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* -------------------------------------------------------
+     NAVBAR
+  ------------------------------------------------------- */
+.navbar {
+    position: static !important;
+
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+
+    gap: 10px !important;
+
+    padding: 10px 12px 8px !important;
+    margin: 0 !important;
+
+    /* SAME AS PAGE BACKGROUND */
+    background: transparent !important;
+
+    /* REMOVE CARD EFFECT */
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+
+    z-index: auto !important;
+
+    overflow: visible !important;
+    flex-shrink: 0 !important;
+  }
+
+
+
+  /* -------------------------------------------------------
+     LOGO ROW
+  ------------------------------------------------------- */
+
+  .logo-container {
+    position: relative !important;
+
+    width: 100% !important;
+
+    height: 38px !important;
+
+    min-height: 38px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    flex: 0 0 auto !important;
+  }
+
+
+  .logo-name {
+    margin: 0 !important;
+
+    font-size: 25px !important;
+
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+  }
+
+
+  /* -------------------------------------------------------
+     MOBILE HEART
+  ------------------------------------------------------- */
+
+  .mobile-heart-btn {
+    position: absolute !important;
+
+    right: 2px !important;
+
+    top: 50% !important;
+
+    transform: translateY(-50%) !important;
+
+    width: 34px !important;
+
+    height: 34px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    padding: 0 !important;
+
+    border: none !important;
+
+    background: #ffffff !important;
+
+    color: #374151 !important;
+
+    border-radius: 50% !important;
+
+    cursor: pointer !important;
+
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-heart-btn:hover {
+    background: #f3f4f6 !important;
+  }
+
+  .mobile-heart-btn svg {
+    width: 19px !important;
+
+    height: 19px !important;
+
+    pointer-events: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+     SEARCH
+  ------------------------------------------------------- */
+
+  .search-box {
+    flex: 0 0 auto !important;
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    min-width: 0 !important;
+
+    height: 45px !important;
+
+    min-height: 45px !important;
+
+    margin: 0 !important;
+
+    padding: 0 16px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    background: #f5f7fb !important;
+
+    border: 1px solid transparent !important;
+
+    border-radius: 14px !important;
+
+    box-shadow: none !important;
+  }
+
+  .search-box:hover {
+    background: #ffffff !important;
+
+    border-color: #2563eb !important;
+  }
+
+  .search-box:focus-within {
+    background: #ffffff !important;
+
+    border-color: #2563eb !important;
+
+    box-shadow:
+      0 0 0 3px rgba(37, 99, 235, 0.10) !important;
+  }
+
+
+  /* -------------------------------------------------------
+     SEARCH ICON
+  ------------------------------------------------------- */
+
+  .search-icon {
+    flex: 0 0 auto !important;
+
+    width: 21px !important;
+
+    height: 21px !important;
+
+    font-size: 21px !important;
+
+    color: #64748b !important;
+  }
+
+
+  /* -------------------------------------------------------
+     SEARCH INPUT
+  ------------------------------------------------------- */
+
+  .search-input {
+    flex: 1 1 auto !important;
+
+    width: 100% !important;
+
+    min-width: 0 !important;
+
+    height: 100% !important;
+
+    margin: 0 0 0 11px !important;
+
+    padding: 0 !important;
+
+    border: none !important;
+
+    outline: none !important;
+
+    background: transparent !important;
+
+    font-size: 16px !important;
+
+    color: #111827 !important;
+  }
+
+
+  /* -------------------------------------------------------
+     MOBILE TABS
+     
+     IMPORTANT:
+     NOT STICKY.
+     
+     Only the complete navbar is sticky.
+  ------------------------------------------------------- */
+
+  .nav-links {
+    position: static !important;
+
+    flex: 0 0 auto !important;
+
+    width: 100% !important;
+
+    height: auto !important;
+
+    min-height: 36px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: space-between !important;
+
+    gap: 6px !important;
+
+    padding: 4px 0 8px !important;
+
+    margin: 0 !important;
+
+    background: #ffffff !important;
+
+    overflow: visible !important;
+
+    z-index: auto !important;
+
+    touch-action: auto !important;
+  }
+
+
+  /* -------------------------------------------------------
+     MOBILE TAB BUTTONS
+  ------------------------------------------------------- */
+
+  .nav-links button {
+    flex: 1 1 0 !important;
+
+    width: 0 !important;
+
+    min-width: 0 !important;
+
+    max-width: none !important;
+
+    height: 36px !important;
+
+    min-height: 36px !important;
+
+    padding: 0 5px !important;
+
+    margin: 0 !important;
+
+    border: none !important;
+
+    border-radius: 20px !important;
+
+    background: #f5f7fb !important;
+
+    color: #374151 !important;
+
+    font-size: clamp(11px, 3.2vw, 14px) !important;
+
+    font-weight: 600 !important;
+
+    white-space: nowrap !important;
+
+    overflow: hidden !important;
+
+    text-overflow: ellipsis !important;
+  }
+
+  .nav-links button:hover {
+    background: #dbeafe !important;
+
+    color: #2563eb !important;
+  }
+
+  .nav-links button.activeTab {
+    background: #2563eb !important;
+
+    color: #ffffff !important;
+  }
+
+  .nav-links button.activeTab:hover {
+    background: #2563eb !important;
+
+    color: #ffffff !important;
+  }
+
+
+  /* -------------------------------------------------------
+     FILTER DROPDOWN
+  ------------------------------------------------------- */
+
+  .filter-dropdown {
+    position: absolute !important;
+
+    top: 100% !important;
+
+    left: 0 !important;
+
+    right: 0 !important;
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    max-height: 70vh !important;
+
+    margin: 4px 0 0 !important;
+
+    padding: 16px !important;
+
+    background: #ffffff !important;
+
+    border-radius: 0 0 16px 16px !important;
+
+    box-shadow:
+      0 5px 20px rgba(0, 0, 0, 0.18) !important;
+
+    overflow-x: hidden !important;
+
+    overflow-y: auto !important;
+
+    z-index: 2000 !important;
+
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+
+  .filter-dropdown h3 {
+    margin: 0 0 14px !important;
+
+    font-size: 18px !important;
+  }
+
+
+  .filter-grid {
+    width: 100% !important;
+
+    grid-template-columns: 1fr 1fr !important;
+
+    gap: 12px !important;
+  }
+
+
+  .filter-grid label {
+    min-width: 0 !important;
+
+    font-size: 13px !important;
+
+    line-height: 1.3 !important;
+  }
+
+
+  .apply-filter-btn {
+    width: 100% !important;
+
+    margin-top: 18px !important;
+
+    padding: 11px !important;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media screen and (max-width: 360px) {
+
+  .navbar {
+    padding-left: 10px !important;
+
+    padding-right: 10px !important;
+  }
+
+
+  .logo-name {
+    font-size: 23px !important;
+  }
+
+
+  .mobile-heart-btn {
+    right: 0 !important;
+
+    width: 32px !important;
+
+    height: 32px !important;
+  }
+
+
+  .search-box {
+    height: 40px !important;
+
+    min-height: 40px !important;
+
+    padding-left: 14px !important;
+
+    padding-right: 14px !important;
+  }
+
+
+  .search-input {
+    margin-left: 9px !important;
+
+    font-size: 15px !important;
+  }
+
+
+  .search-icon {
+    width: 19px !important;
+
+    height: 19px !important;
+
+    font-size: 19px !important;
+  }
+
+
+  .nav-links {
+    gap: 5px !important;
+
+    padding-top: 3px !important;
+
+    padding-bottom: 7px !important;
+  }
+
+
+  .nav-links button {
+    height: 34px !important;
+
+    min-height: 34px !important;
+
+    padding-left: 3px !important;
+
+    padding-right: 3px !important;
+
+    font-size: 11px !important;
+
+    border-radius: 18px !important;
+  }
+
+
+  .filter-dropdown {
+    left: 0 !important;
+
+    right: 0 !important;
+
+    width: 100% !important;
+
+    padding: 14px !important;
+
+    border-radius: 0 0 14px 14px !important;
+  }
+
+
+  .filter-grid {
+    gap: 10px !important;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY / FOCUS
+========================================================= */
+.nav-links button:focus-visible,
+.mobile-heart-btn:focus-visible,
+.apply-filter-btn:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* SEARCH INPUT - NO BLUE BOX */
+.search-input:focus,
+.search-input:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================================
+   MOBILE PLUS ICON
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .logo-container {
+    position: relative !important;
+  }
+
+  .mobile-plus-btn {
+    position: absolute !important;
+
+    left: 0 !important;
+    top: 50% !important;
+
+    transform: translateY(-50%) !important;
+
+    width: 34px !important;
+    height: 34px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 0 !important;
+    outline: none !important;
+
+    background: transparent !important;
+
+    color: #000000 !important;
+
+    font-family: Arial, sans-serif !important;
+    font-size: 32px !important;
+    font-weight: 400 !important;
+
+    line-height: 34px !important;
+    text-align: center !important;
+
+    cursor: pointer !important;
+
+    z-index: 9999 !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .mobile-plus-btn:hover,
+  .mobile-plus-btn:focus {
+    background: transparent !important;
+    color: #000000 !important;
+    outline: none !important;
+  }
+
+  .mobile-plus-btn:active {
+    transform: translateY(-50%) scale(0.9) !important;
+  }
+}
+
+
+/* DESKTOP - HIDE PLUS */
+
+@media screen and (min-width: 769px) {
+  .mobile-plus-btn {
+    display: none !important;
+  }
 }
